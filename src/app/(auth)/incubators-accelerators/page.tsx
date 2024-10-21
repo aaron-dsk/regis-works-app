@@ -1,6 +1,5 @@
 'use client'
 
-import React, { useState } from 'react';
 import TabBar from '@/components/tab-bar';
 import { DataGrid } from '@/components/data-grid';
 import { ListView, ListViewItem } from '@/components/list-view';
