@@ -9,7 +9,7 @@ import { Clock, Filter } from "lucide-react"
 
 export function Marketplace2() {
   return (
-    <div className="container mx-auto p-4">
+    <div className="container mx-auto">
       <div className="flex items-center justify-between mb-4">
         <h1 className="text-2xl font-bold">Offerings</h1>
         <div className="flex items-center space-x-2">
