@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button"
 import { Search, Briefcase, BookmarkIcon, BarChart2, Settings, HelpCircle, Mail } from "lucide-react"
 import Link from "next/link"
 import { usePathname } from 'next/navigation'
+import Image from 'next/image'
 
 export function SideBarNav() {
   const pathname = usePathname()
@@ -24,20 +25,7 @@ export function SideBarNav() {
   return (
     <div className="flex flex-col h-screen w-72 bg-gray-900 text-gray-100">
       <div className="p-4 border-b border-gray-800">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center space-x-3">
-            <Avatar className="w-10 h-10 border-2 border-green-500">
-              <AvatarImage src="/images/profile-pic.png" alt="John Doe" />
-              <AvatarFallback>FS</AvatarFallback>
-            </Avatar>
-            <div>
-              <h2 className="text-sm font-semibold">John Doe</h2>
-              <Link className="text-xs text-blue-400" href="#">
-                Update profile
-              </Link>
-            </div>
-          </div>
-        </div>
+        <Image src="/images/RwLogo.png" alt="Logo" width={150} height={50} />
       </div>
       <nav className="flex-1 overflow-y-auto">
         <div className="px-4 py-2 space-y-1">
@@ -51,6 +39,20 @@ export function SideBarNav() {
           ))}
         </div>
       </nav>
+      <div className="p-4 border-t border-gray-800">
+        <div className="flex items-center space-x-3">
+          <Avatar className="w-10 h-10 border-2 border-green-500">
+            <AvatarImage src="/images/profile-pic.png" alt="John Doe" />
+            <AvatarFallback>JD</AvatarFallback>
+          </Avatar>
+          <div>
+            <h2 className="text-sm font-semibold">John Doe</h2>
+            <Link className="text-xs text-blue-400" href="#">
+              Update profile
+            </Link>
+          </div>
+        </div>
+      </div>
     </div>
   )
 }
