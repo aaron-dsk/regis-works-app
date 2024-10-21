@@ -27,7 +27,7 @@ export function ModernLoginPageComponent() {
 
     if (isValidCredential) {
       localStorage.setItem('isLoggedIn', 'true')
-      router.push('/recommended-jobs')  // Update this line
+      router.push('/research-resources')  // Update this line
     } else {
       setError('Username or password invalid')
     }
