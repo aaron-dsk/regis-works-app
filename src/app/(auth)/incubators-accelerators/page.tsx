@@ -6,14 +6,8 @@ import { DataGrid } from '@/components/data-grid';
 import { ListView, ListViewItem } from '@/components/list-view';
 import { SavedJobs } from '@/components/saved-jobs';
 import { Badge } from '@/components/ui/badge';
-import ToggleView from '@/components/toggle-view';
 
 const IncuAccele = () => {
-  const [isGalleryView, setIsGalleryView] = useState(false);
-
-  const handleToggleView = () => {
-    setIsGalleryView(!isGalleryView);
-  };
 
   const financingData: ListViewItem[] = [
     {
