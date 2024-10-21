@@ -25,11 +25,7 @@ const ResearchResourcesPage = () => {
           <div className="absolute top-0 right-0 z-10">
             <ToggleView isGalleryView={isGalleryView} onToggle={handleToggleView} />
           </div>
-          {isGalleryView ? (
-            <JobListings view="gallery" />
-          ) : (
-            <ModernResourceBrowser />
-          )}
+          {isGalleryView ? <JobListings /> : <ModernResourceBrowser />}
         </div>
       ),
     },

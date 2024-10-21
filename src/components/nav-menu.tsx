@@ -13,7 +13,7 @@ export function SideBarNav() {
     { name: 'Research Resources', icon: Search, path: '/research-resources' },
     { name: 'SPI', icon: Briefcase, path: '/spi' },
     { name: 'Incubation & Acceleration', icon: BookmarkIcon, path: '/incubators-accelerators' },
-    { name: 'Favorites', icon: BarChart2, path: '/Favorites' },
+    { name: 'Favorites', icon: BarChart2, path: '/favorites' },
     { name: 'Communications', icon: Mail, path: '/communications' },
     { name: 'Settings', icon: Settings, path: '/settings' },
     { name: 'Help Center', icon: HelpCircle, path: '/help-center' },
