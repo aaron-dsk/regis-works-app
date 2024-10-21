@@ -51,7 +51,6 @@ export function SideBarNav() {
           ))}
         </div>
       </nav>
-      <div className="p-4 text-xs text-gray-500">Regis Works All Rights Reserved ©</div>
     </div>
   )
 }

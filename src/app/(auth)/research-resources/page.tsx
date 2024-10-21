@@ -179,6 +179,45 @@ const ResearchResourcesPage = () => {
     { key: 'relevantExperience', label: 'Relevant Experience', render: (item: DataGridItem) => item.relevantExperience },
   ];
 
+  const testingData = [
+    {
+      id: 1,
+      name: "Dr. Emily Chen",
+      company: "Johns Hopkins University",
+      role: "Clinical Trial Coordinator",
+      experience: "8 years",
+      skills: ["Clinical Research", "Data Analysis", "REDCap", "GCP Compliance"],
+      image: "/images/marketplace/emily.jpg",
+      companyLogo: "/images/marketplace/hopkins.jpg",
+    },
+    {
+      id: 2,
+      name: "Carlos Rodriguez",
+      company: "Globant",
+      role: "Bioinformatics Senior Software Engineer",
+      experience: "6 years",
+      skills: ["Python", "R", "Machine Learning", "NGS Data Analysis"],
+      image: "/images/marketplace/carlos.jpg",
+      companyLogo: "/images/marketplace/globant.jpg",
+    },
+    {
+      id: 3,
+      name: "Dr. Sarah Thompson",
+      company: "University of Florida",
+      role: "Medical Imaging Researcher",
+      experience: "10 years",
+      skills: ["MRI Analysis", "DICOM", "Image Processing", "MATLAB"],
+      image: "/images/marketplace/sarah.jpg",
+      companyLogo: "/images/marketplace/UF.jpg",
+    }
+  ];
+
+  const testingFilters = [
+    { key: 'name', title: 'Name', type: 'text' as const },
+    { key: 'company', title: 'Company', type: 'text' as const },
+    { key: 'skills', title: 'Skills', type: 'text' as const },
+  ];
+
   const tabs = [
     {
       label: 'Human capital',
@@ -206,7 +245,12 @@ const ResearchResourcesPage = () => {
     },
     {
       label: 'Testing',
-      content: <Marketplace />,
+      content: (
+        <Marketplace 
+          data={testingData}
+          filters={testingFilters}
+        />
+      ),
     },
     {
       label: 'Software',
