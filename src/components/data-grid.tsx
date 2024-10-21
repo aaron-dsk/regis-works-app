@@ -71,7 +71,7 @@ function JobSection({ title, jobs, totalJobs }: JobSectionProps) {
   )
 }
 
-export function JobListings() {
+export function DataGrid() {
   const jobsBasedOnPreferences: Job[] = [
     {
       title: "Data Scientist (Genomics)",
