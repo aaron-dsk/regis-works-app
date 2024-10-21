@@ -1,7 +1,7 @@
 'use client'
 
 import TabBar from '@/components/tab-bar';
-import { DataGrid } from '@/components/data-grid';
+import { IncubatorAcceleratorCard } from '@/components/incubator-accelerator-card';
 import { ListView, ListViewItem } from '@/components/list-view';
 import { SavedJobs } from '@/components/saved-jobs';
 import { Badge } from '@/components/ui/badge';
@@ -19,7 +19,36 @@ const IncuAccele = () => {
       location: "San Francisco, CA",
       contactPerson: "John Doe",
     },
-    // ... add more financing data items
+    {
+      id: 2,
+      name: "VentureX Capital",
+      type: "VC Firm",
+      investmentRange: "$500k - $5M",
+      focusAreas: ["Fintech", "Healthcare", "Blockchain"],
+      stage: "Series A",
+      location: "New York, NY",
+      contactPerson: "Jane Smith",
+    },
+    {
+      id: 3,
+      name: "GreenTech Investors",
+      type: "Angel Investor",
+      investmentRange: "$50k - $500k",
+      focusAreas: ["Sustainability", "Energy", "AgTech"],
+      stage: "Pre-Seed",
+      location: "Austin, TX",
+      contactPerson: "Robert Green",
+    },
+    {
+      id: 4,
+      name: "Blue Horizon Ventures",
+      type: "Institutional Investor",
+      investmentRange: "$1M - $10M",
+      focusAreas: ["Biotech", "Medtech", "Pharmaceuticals"],
+      stage: "Series B",
+      location: "Boston, MA",
+      contactPerson: "Alice Brown",
+    }
   ];
 
   const financingColumns = [
@@ -59,7 +88,7 @@ const IncuAccele = () => {
     },
     {
       label: 'Incubators and Accelerators',
-      content: <DataGrid />,
+      content: <IncubatorAcceleratorCard />,
     },
     {
       label: 'Financing',

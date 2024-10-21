@@ -10,9 +10,9 @@ export function Blog() {
         <main className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {[
             {
-              title: "TensorFlow",
+              title: "U.S. Air Force \"Into The Storm\" by MediaMonks wins Site of the Month March 2021",
               image: "/images/blog-1.jpg",
-              type: "Open Source",
+              date: "April 21, 2021",
               author: "Michelle Lundrop"
             },
             {

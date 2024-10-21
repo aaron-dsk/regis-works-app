@@ -6,10 +6,11 @@ import { DataGrid, DataGridItem } from '@/components/data-grid';
 import { Marketplace } from '@/components/marketplace';
 import { ListView, ListViewItem } from '@/components/list-view';
 import ToggleView from '@/components/toggle-view';
-import { Blog } from '@/components/blog';
+import { HardwareShowcase } from '@/components/hardware-showcase'
 import { Marketplace2 } from '@/components/marketplace2';
-import { SavedJobs } from '@/components/saved-jobs';
+import { ServiceListings } from '@/components/service-listings';
 import { Badge } from '@/components/ui/badge'
+import { SoftwareShowcase } from '@/components/software-showcase'
 
 const ResearchResourcesPage = () => {
   const [isGalleryView, setIsGalleryView] = useState(false);
@@ -254,11 +255,11 @@ const ResearchResourcesPage = () => {
     },
     {
       label: 'Software',
-      content: <Blog />,
+      content: <SoftwareShowcase />,
     },
     {
       label: 'Hardware',
-      content: <Blog />,
+      content: <HardwareShowcase />,
     },
     {
       label: 'Data',
@@ -266,7 +267,7 @@ const ResearchResourcesPage = () => {
     },
     {
       label: 'Services',
-      content: <SavedJobs />,
+      content: <ServiceListings />,
     },
   ];
 
