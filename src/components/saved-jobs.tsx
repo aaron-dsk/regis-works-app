@@ -6,11 +6,8 @@ import Image from "next/image"
 export function SavedJobs() {
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <header className="bg-background border-b border-border p-4">
-        <h1 className="text-xl font-bold">SavedJobs</h1>
-      </header>
 
-      <main className="container mx-auto p-4 space-y-4">
+      <main className="container mx-auto space-y-4">
         <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-4">
           <h2 className="font-semibold mb-2 text-gray-900">How early application can benefit you</h2>
           <ul className="space-y-2">

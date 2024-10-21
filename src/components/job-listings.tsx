@@ -14,10 +14,15 @@ interface Job {
   postedAgo: string
 }
 
+interface JobListingsProps {
+  view: 'list' | 'gallery';
+}
+
 interface JobSectionProps {
   title: string
   jobs: Job[]
   totalJobs: number
+  view: 'list' | 'gallery'
 }
 
 function JobCard({ job }: { job: Job }) {
@@ -51,7 +56,7 @@ function JobCard({ job }: { job: Job }) {
   )
 }
 
-function JobSection({ title, jobs, totalJobs }: JobSectionProps) {
+function JobSection({ title, jobs, totalJobs, view }: JobSectionProps) {
   return (
     <div className="mb-8">
       <div className="flex justify-between items-center mb-4">
@@ -62,7 +67,7 @@ function JobSection({ title, jobs, totalJobs }: JobSectionProps) {
           View all
         </Button>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div className={`grid ${view === 'gallery' ? 'grid-cols-1 md:grid-cols-2 lg:grid-cols-4' : 'grid-cols-1'} gap-4`}>
         {jobs.map((job, index) => (
           <JobCard key={index} job={job} />
         ))}
@@ -71,7 +76,7 @@ function JobSection({ title, jobs, totalJobs }: JobSectionProps) {
   )
 }
 
-export function JobListings() {
+export function JobListings({ view }: JobListingsProps) {
   const jobsBasedOnPreferences: Job[] = [
     {
       title: "Data Scientist (Genomics)",
@@ -153,10 +158,10 @@ export function JobListings() {
   ]
 
   return (
-    <div className="min-h-screen bg-background text-foreground p-8 w-full max-w-10xl mx-auto">
-      <JobSection title="Jobs based on your preferences" jobs={jobsBasedOnPreferences} totalJobs={10} />
-      <JobSection title="Recommended jobs" jobs={recommendedJobs} totalJobs={10} />
-      <JobSection title="You might like" jobs={youMightLike} totalJobs={2} />
+    <div className="min-h-screen bg-background text-foreground w-full max-w-10xl mx-auto">
+      <JobSection title="Jobs based on your preferences" jobs={jobsBasedOnPreferences} totalJobs={10} view={view} />
+      <JobSection title="Recommended jobs" jobs={recommendedJobs} totalJobs={10} view={view} />
+      <JobSection title="You might like" jobs={youMightLike} totalJobs={2} view={view} />
     </div>
   )
 }

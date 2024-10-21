@@ -2,7 +2,7 @@
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
-import { Search, Briefcase, BookmarkIcon, BarChart2, Settings, FileText, HelpCircle, Mail } from "lucide-react"
+import { Search, Briefcase, BookmarkIcon, BarChart2, Settings, HelpCircle, Mail } from "lucide-react"
 import Link from "next/link"
 import { usePathname } from 'next/navigation'
 
@@ -10,13 +10,12 @@ export function SideBarNav() {
   const pathname = usePathname()
 
   const menuItems = [
-    { name: 'Search jobs', icon: Search, path: '/search-jobs' },
-    { name: 'Recommended jobs', icon: Briefcase, path: '/recommended-jobs' },
-    { name: 'Saved jobs', icon: BookmarkIcon, path: '/saved-jobs' },
-    { name: 'Profile performance', icon: BarChart2, path: '/profile-performance' },
+    { name: 'Research Resources', icon: Search, path: '/research-resources' },
+    { name: 'SPI', icon: Briefcase, path: '/spi' },
+    { name: 'Incubation & Acceleration', icon: BookmarkIcon, path: '/incubators-accelerators' },
+    { name: 'Favorites', icon: BarChart2, path: '/Favorites' },
     { name: 'Communications', icon: Mail, path: '/communications' },
     { name: 'Settings', icon: Settings, path: '/settings' },
-    { name: 'Regis Works blog', icon: FileText, path: '/blog' },
     { name: 'Help Center', icon: HelpCircle, path: '/help-center' },
   ]
 

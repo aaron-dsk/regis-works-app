@@ -7,19 +7,7 @@ import { Card, CardContent } from "@/components/ui/card"
 export function Blog() {
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <h1 className="text-3xl font-bold mb-4">Blogs</h1>
-        <nav className="flex space-x-8 py-4 border-b border-border mb-8">
-          <Link href="#" className="text-sm font-medium">
-            BLOG ▼
-          </Link>
-          <Link href="#" className="text-sm font-medium">
-            CATEGORIES ▼
-          </Link>
-          <Link href="#" className="text-sm font-medium">
-            TAGS ▼
-          </Link>
-        </nav>
+      <div className="max-w-7xl mx-auto py-8">
         <main className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {[
             {
