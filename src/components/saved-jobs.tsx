@@ -2,7 +2,6 @@
 
 import { Card, CardContent } from "@/components/ui/card"
 import { MapPin, Tag, Building2 } from "lucide-react"
-import Image from "next/image"
 
 const programs = [
   {
