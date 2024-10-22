@@ -1,78 +1,83 @@
 'use client'
 
 import Image from "next/image"
-import { Clock, Shield, ChevronRight } from "lucide-react"
-
-import { Card, CardContent, CardHeader } from "@/components/ui/card"
+import { Clock, ChevronRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 export function ServiceListings() {
+  const services = [
+    {
+      image: "/images/marketplace/globant.jpg",
+      title: "Comprehensive Cybersecurity Risk Assessment for Research Infrastructures",
+      company: "Globant",
+      location: "Global",
+      responseTime: "Response time is typically 1 business day"
+    },
+    {
+      image: "/images/projects/concordia.jpg",
+      title: "Multi-Stage Engine Stress Testing for Advanced Aerospace Research",
+      company: "Concordia University",
+      location: "Montreal, Canada"
+    },
+    {
+      image: "/images/marketplace/UF.jpg",
+      title: "HAI-Powered Genomic Analysis for Precision Medicine and Drug Discovery",
+      company: "University of Florida",
+      location: "Gainesville, Florida"
+    },
+    {
+      image: "/images/projects/cambridge.jpg",
+      title: "Advanced Biometric Authentication Systems for Research Data Security",
+      company: "University of Cambridge",
+      location: "Cambridge, UK"
+    },
+    {
+      image: "/images/projects/mit.png",
+      title: "Quantum Computing Solutions for Complex Molecular Simulations",
+      company: "IBM Research, MIT Collaboration",
+      location: "Cambridge, Massachusetts, USA"
+    },
+    {
+      image: "/images/projects/stanford.png",
+      title: "AI-Driven Medical Image Analysis for Early Cancer Detection",
+      company: "Stanford University",
+      location: "Stanford, California, USA"
+    }
+  ];
+
   return (
-    <Card className="w-full max-w-5xl mx-auto">
-      <CardHeader>
-        <h2 className="text-2xl font-bold">Top service picks for you</h2>
-        <p className="text-muted-foreground">Based on your profile and search history</p>
-      </CardHeader>
-      <CardContent className="space-y-4">
-        <div className="flex items-start space-x-4">
-          <Image
-            src="/images/marketplace/globant.jpg"
-            alt="TechGuard logo"
-            width={48}
-            height={48}
-            className="rounded-full"
-          />
-          <div className="flex-1 space-y-1">
-            <h3 className="text-xl font-semibold text-blue-600">Advanced Cybersecurity Solutions</h3>
-            <p className="font-semibold">Globant</p>
-            <p className="text-muted-foreground">Global</p>
-            <div className="flex items-center text-green-600">
-              <Clock className="w-4 h-4 mr-2" />
-              <span className="text-sm">Response time is typically 1 business day</span>
+    <div className="w-full max-w-5xl mx-auto">
+      <h2 className="text-2xl font-bold mb-2">Top service picks for you</h2>
+      <p className="text-muted-foreground mb-4">Based on your profile and search history</p>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {services.map((service, index) => (
+          <div key={index} className="flex items-start space-x-4 p-4 border rounded-lg">
+            <div className="w-12 h-12 flex-shrink-0 overflow-hidden rounded-full">
+              <Image
+                src={service.image}
+                alt={`${service.company} logo`}
+                width={48}
+                height={48}
+                className="w-full h-full object-cover"
+              />
             </div>
-          </div>
-          <Button variant="ghost" size="icon">
-            <ChevronRight className="h-4 w-4" />
-          </Button>
-        </div>
-        <div className="flex items-start space-x-4">
-          <Image
-            src="/images/concordia.avif"
-            alt="DataPro logo"
-            width={48}
-            height={48}
-            className="rounded-full"
-          />
-          <div className="flex-1 space-y-1">
-            <h3 className="text-xl font-semibold text-blue-600">Engine Stress Testing</h3>
-            <p className="font-semibold">Concordia University</p>
-            <p className="text-muted-foreground">Montreal, Canada</p>
-            <div className="flex items-center">
-              <Shield className="w-4 h-4 mr-2" />
+            <div className="flex-1 space-y-1">
+              <h3 className="text-xl font-semibold text-blue-600">{service.title}</h3>
+              <p className="font-semibold">Provided by: {service.company}</p>
+              <p className="text-muted-foreground">{service.location}</p>
+              {service.responseTime && (
+                <div className="flex items-center text-green-600">
+                  <Clock className="w-4 h-4 mr-2" />
+                  <span className="text-sm">{service.responseTime}</span>
+                </div>
+              )}
             </div>
+            <Button variant="ghost" size="icon">
+              <ChevronRight className="h-4 w-4" />
+            </Button>
           </div>
-          <Button variant="ghost" size="icon">
-            <ChevronRight className="h-4 w-4" />
-          </Button>
-        </div>
-        <div className="flex items-start space-x-4">
-          <Image
-            src="/images/super-computer.jpg"
-            alt="AInnov logo"
-            width={48}
-            height={48}
-            className="rounded-full"
-          />
-          <div className="flex-1 space-y-1">
-            <h3 className="text-xl font-semibold text-blue-600">High-Performance Computing for Biomedical Research</h3>
-            <p className="font-semibold">University of Florida</p>
-            <p className="text-muted-foreground">Gainesville, Florida</p>
-          </div>
-          <Button variant="ghost" size="icon">
-            <ChevronRight className="h-4 w-4" />
-          </Button>
-        </div>
-      </CardContent>
-    </Card>
+        ))}
+      </div>
+    </div>
   )
 }

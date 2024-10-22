@@ -18,7 +18,7 @@ const softwareData = [
     type: "Private",
     description: "A high-level programming language and interactive environment for numerical computation, visualization, and programming.",
     owner: "MathWorks",
-    website: "mathworks.com/products/matlab.html",
+    website: "mathworks.com",
     image: "/images/software/mat-lab.jpg"
   },
   {
@@ -28,27 +28,43 @@ const softwareData = [
     owner: "IBM",
     website: "ibm.com/analytics/spss-statistics",
     image: "/images/software/ibm.svg"
+  },
+  {
+    name: "NVivo",
+    type: "Private",
+    description: "A qualitative data analysis (QDA) software package for researchers working with unstructured data.",
+    owner: "QSR International",
+    website: "qsrinternational.com/nvivo-qualitative-data-analysis-software/home",
+    image: "/images/software/nvivo.jpg"
+  },
+  {
+    name: "GROMACS",
+    type: "Open Source",
+    description: "A molecular dynamics package primarily designed for simulations of proteins, lipids, and nucleic acids.",
+    owner: "GROMACS Development Team",
+    website: "gromacs.org",
+    image: "/images/software/gromacs.png"
   }
 ]
 
 export function SoftwareShowcase() {
   return (
     <div className="container mx-auto px-4 py-8">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
         {softwareData.map((software, index) => (
-          <Card key={index} className="overflow-hidden">
+          <Card key={index} className="flex flex-col h-full">
             <Image
               src={software.image}
               alt={software.name}
               width={300}
               height={200}
-              className="w-full h-48 object-cover"
+              className="w-full h-40 object-cover"
             />
             <CardHeader className="pb-2">
-              <CardTitle>{software.name}</CardTitle>
+              <CardTitle className="text-lg">{software.name}</CardTitle>
               <CardDescription>{software.type}</CardDescription>
             </CardHeader>
-            <CardContent>
+            <CardContent className="flex-grow">
               <p className="text-sm mb-4">{software.description}</p>
               <div className="text-sm">
                 <p><strong>Owner:</strong> {software.owner}</p>
