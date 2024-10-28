@@ -7,7 +7,7 @@ import { Marketplace } from '@/components/marketplace';
 import { ListView, ListViewItem } from '@/components/list-view';
 import ToggleView from '@/components/toggle-view';
 import { HardwareShowcase } from '@/components/hardware-showcase'
-import { Marketplace2 } from '@/components/marketplace2';
+import { MedicalDataTable } from '@/components/medical-data-table';
 import { ServiceListings } from '@/components/service-listings';
 import { Badge } from '@/components/ui/badge'
 import { SoftwareShowcase } from '@/components/software-showcase'
@@ -260,7 +260,7 @@ const ResearchResourcesPage = () => {
     },
     {
       label: 'Data',
-      content: <Marketplace2 />,
+      content: <MedicalDataTable />,
     },
     {
       label: 'Services',
