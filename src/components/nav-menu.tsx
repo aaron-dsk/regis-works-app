@@ -25,7 +25,7 @@ export function SideBarNav() {
   return (
     <div className="flex flex-col h-screen w-72 bg-gray-900 text-gray-100">
       <div className="p-4 border-b border-gray-800">
-        <Image src="/images/RwLogo.png" alt="Logo" width={150} height={50} />
+        <Image src="/images/RD-Axis.png" alt="Logo" width={150} height={50} />
       </div>
       <nav className="flex-1 overflow-y-auto">
         <div className="px-4 py-2 space-y-1">

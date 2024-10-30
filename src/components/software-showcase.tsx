@@ -49,7 +49,7 @@ const softwareData = [
 
 export function SoftwareShowcase() {
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="w-full">
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
         {softwareData.map((software, index) => (
           <Card key={index} className="flex flex-col h-full">

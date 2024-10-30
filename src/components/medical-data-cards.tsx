@@ -66,7 +66,7 @@ const CircularProgressBar = ({ progress }: { progress: number }) => {
 
 export function MedicalDataCards() {
   return (
-    <div className="container mx-auto p-4">
+    <div className="w-full">
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
         {dataSources.map((source, index) => (
           <div key={index} className="bg-white shadow-md rounded-lg overflow-hidden">

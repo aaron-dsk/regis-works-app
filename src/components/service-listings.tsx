@@ -46,7 +46,7 @@ export function ServiceListings() {
   ];
 
   return (
-    <div className="w-full max-w-5xl mx-auto">
+    <div className="w-full">
       <h2 className="text-2xl font-bold mb-2">Top service picks for you</h2>
       <p className="text-muted-foreground mb-4">Based on your profile and search history</p>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
