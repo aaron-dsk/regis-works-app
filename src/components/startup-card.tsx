@@ -45,7 +45,7 @@ const startups = [
 
 export function StartupCards() {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-6">
+    <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {startups.map((project, index) => (
         <Card key={index} className="flex flex-col">
           <CardHeader className="p-0">

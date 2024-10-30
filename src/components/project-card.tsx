@@ -48,7 +48,7 @@ const projects = [
 
 export function ProjectCards() {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-6">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full">
       {projects.map((project, index) => (
         <Card key={index} className="flex flex-col relative">
           <CardHeader className="p-0">

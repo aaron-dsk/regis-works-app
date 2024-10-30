@@ -32,7 +32,7 @@ const programs = [
 
 export function SavedJobs() {
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container mx-auto w-full">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         {programs.map((program, index) => (
           <Card key={index} className="flex flex-col">

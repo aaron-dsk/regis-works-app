@@ -6,7 +6,7 @@ import { Card, CardContent } from "@/components/ui/card"
 export function Blog() {
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <div className="max-w-7xl mx-auto py-8">
+      <div className="max-w-7xl mx-auto">
         <main className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {[
             {
