@@ -2,7 +2,7 @@
 
 import TabBar from '@/components/tab-bar';
 import  { StartupCards } from '@/components/startup-card';
-import { ProjectCards } from '@/components/project-card'
+import { ResearchCards } from '@/components/research-cards'
 import { Blog } from '@/components/blog';
 
 
@@ -15,7 +15,7 @@ const SpiPage = () => {
     },
     {
       label: 'Projects',
-      content: <ProjectCards/>,
+      content: <ResearchCards/>,
     },
     {
       label: 'Initiatives',
