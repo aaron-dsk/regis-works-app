@@ -23,7 +23,7 @@ export function SideBarNav() {
   const isActive = (path: string) => pathname === path
 
   return (
-    <div className="flex flex-col h-screen w-72 bg-gray-900 text-gray-100">
+    <div className="flex flex-col h-screen w-72 bg-gray-50 text-black">
       <div className="p-4 border-b border-gray-800">
         <Image src="/images/RD-Axis.png" alt="Logo" width={150} height={50} />
       </div>
@@ -31,7 +31,7 @@ export function SideBarNav() {
         <div className="px-4 py-2 space-y-1">
           {menuItems.map((item) => (
             <Link key={item.name} href={item.path}>
-              <Button variant="ghost" className={`w-full justify-start ${isActive(item.path) ? 'bg-gray-800' : ''}`}>
+              <Button variant="ghost" className={`w-full justify-start ${isActive(item.path) ? 'bg-gray-800 text-gray-50' : ''}`}>
                 <item.icon className="mr-2 h-4 w-4" />
                 {item.name}
               </Button>
