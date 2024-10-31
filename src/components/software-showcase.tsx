@@ -60,14 +60,14 @@ export function SoftwareShowcase() {
             transition={{ duration: 0.4, delay: index * 0.1 }}
             className="h-full"
           >
-            <Card className="flex flex-col h-full">
-              <Image
-                src={software.image}
-                alt={software.name}
-                width={300}
-                height={200}
-                className="w-full h-40 object-cover"
-              />
+            <Card className="flex flex-col h-full overflow-hidden">
+            <Image
+              src={software.image}
+              alt={software.name}
+              width={300}
+              height={200}
+              className="w-full h-40 object-cover" // No need for separate border radius
+            />
               <CardHeader className="pb-2">
                 <CardTitle className="text-lg">{software.name}</CardTitle>
                 <CardDescription>{software.type}</CardDescription>
