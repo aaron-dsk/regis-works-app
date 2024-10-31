@@ -56,7 +56,7 @@ export function ResearchCards() {
           key={project.title}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: index * 0.1 }}
+          transition={{ duration: 0.4, delay: index * 0.1 }}
         >
           <Card className="overflow-hidden bg-white flex flex-col h-[600px]">
             <div className="relative">

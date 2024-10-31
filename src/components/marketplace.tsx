@@ -6,6 +6,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Badge } from "@/components/ui/badge"
 import { Search } from "lucide-react"
 import Image from "next/image"
+import { motion } from "framer-motion"
 
 interface MarketplaceItem {
   id: number;
@@ -58,38 +59,46 @@ export function Marketplace({ data, filters }: MarketplaceProps) {
         ))}
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {data.map((item) => (
-          <Card key={item.id} className="overflow-hidden">
-            <div className="relative h-24">
-              <Image 
-                src={item.image} 
-                alt={item.name} 
-                layout="fill" 
-                objectFit="cover" 
-                objectPosition="center" 
-                className="rounded-t-xl"
-              />
-              <div className="absolute top-2 right-2 w-8 h-8 rounded-full overflow-hidden border-2 border-white bg-white">
+        {data.map((item, index) => (
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, delay: index * 0.1 }}
+            className="h-full"
+          >
+            <Card className="overflow-hidden h-full flex flex-col">
+              <div className="relative h-24">
                 <Image 
-                  src={item.companyLogo} 
-                  alt={`${item.company} logo`} 
+                  src={item.image} 
+                  alt={item.name} 
                   layout="fill" 
-                  objectFit="contain"
+                  objectFit="cover" 
+                  objectPosition="center" 
+                  className="rounded-t-xl"
                 />
+                <div className="absolute top-2 right-2 w-8 h-8 rounded-full overflow-hidden border-2 border-white bg-white">
+                  <Image 
+                    src={item.companyLogo} 
+                    alt={`${item.company} logo`} 
+                    layout="fill" 
+                    objectFit="contain"
+                  />
+                </div>
               </div>
-            </div>
-            <CardContent className="p-4">
-              <h3 className="text-lg font-semibold mb-1">{item.name}</h3>
-              <p className="text-sm mb-2">{item.experience}</p>
-              <div className="flex flex-wrap gap-1 mb-2">
-                {item.skills.map((skill, index) => (
-                  <Badge key={index} variant="secondary" className="text-xs">
-                    {skill}
-                  </Badge>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
+              <CardContent className="p-4">
+                <h3 className="text-lg font-semibold mb-1">{item.name}</h3>
+                <p className="text-sm mb-2">{item.experience}</p>
+                <div className="flex flex-wrap gap-1 mb-2">
+                  {item.skills.map((skill, index) => (
+                    <Badge key={index} variant="secondary" className="text-xs">
+                      {skill}
+                    </Badge>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+          </motion.div>
         ))}
       </div>
     </div>

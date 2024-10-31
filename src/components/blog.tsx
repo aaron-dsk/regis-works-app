@@ -1,5 +1,6 @@
 'use client'
 
+import { motion } from "framer-motion"
 import { Card, CardContent } from "@/components/ui/card"
 
 export function Blog() {
@@ -35,40 +36,48 @@ export function Blog() {
       <div className="max-w-7xl mx-auto">
         <main className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, index) => (
-            <Card key={index} className="overflow-hidden bg-card dark:bg-gray-800">
-              <img
-                src={project.image}
-                alt={project.title}
-                className="w-full h-48 object-cover"
-              />
-              <CardContent className="p-6 space-y-4">
-                <h2 className="text-lg font-semibold">{project.title}</h2>
-                
-                <div className="space-y-2">
-                  <p className="text-sm text-muted-foreground">
-                    <span className="font-medium">Organization:</span> {project.organization}
-                  </p>
-                  <p className="text-sm text-muted-foreground">
-                    <span className="font-medium">Location:</span> {project.location}
-                  </p>
-                </div>
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: index * 0.1 }}
+              className="h-full"
+            >
+              <Card className="overflow-hidden bg-card dark:bg-gray-800 h-full">
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  className="w-full h-48 object-cover"
+                />
+                <CardContent className="p-6 space-y-4">
+                  <h2 className="text-lg font-semibold">{project.title}</h2>
+                  
+                  <div className="space-y-2">
+                    <p className="text-sm text-muted-foreground">
+                      <span className="font-medium">Organization:</span> {project.organization}
+                    </p>
+                    <p className="text-sm text-muted-foreground">
+                      <span className="font-medium">Location:</span> {project.location}
+                    </p>
+                  </div>
 
-                <div className="flex flex-wrap gap-2">
-                  {project.tags.map((tag, tagIndex) => (
-                    <span 
-                      key={tagIndex}
-                      className="px-2 py-1 text-xs rounded-full bg-primary/10 text-primary"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
+                  <div className="flex flex-wrap gap-2">
+                    {project.tags.map((tag, tagIndex) => (
+                      <span 
+                        key={tagIndex}
+                        className="px-2 py-1 text-xs rounded-full bg-primary/10 text-primary"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
 
-                <p className="text-sm text-muted-foreground">
-                  {project.description}
-                </p>
-              </CardContent>
-            </Card>
+                  <p className="text-sm text-muted-foreground">
+                    {project.description}
+                  </p>
+                </CardContent>
+              </Card>
+            </motion.div>
           ))}
         </main>
       </div>

@@ -3,6 +3,7 @@
 import Image from "next/image"
 import { Clock, ChevronRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { motion } from "framer-motion"
 
 export function ServiceListings() {
   const services = [
@@ -47,35 +48,41 @@ export function ServiceListings() {
 
   return (
     <div className="w-full">
-      <h2 className="text-2xl font-bold mb-2">Top service picks for you</h2>
-      <p className="text-muted-foreground mb-4">Based on your profile and search history</p>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {services.map((service, index) => (
-          <div key={index} className="flex items-start space-x-4 p-4 border rounded-lg">
-            <div className="w-12 h-12 flex-shrink-0 overflow-hidden rounded-full">
-              <Image
-                src={service.image}
-                alt={`${service.company} logo`}
-                width={48}
-                height={48}
-                className="w-full h-full object-cover"
-              />
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, delay: index * 0.1 }}
+            className="h-full"
+          >
+            <div className="flex items-start space-x-4 p-4 border rounded-lg h-full">
+              <div className="w-12 h-12 flex-shrink-0 overflow-hidden rounded-full">
+                <Image
+                  src={service.image}
+                  alt={`${service.company} logo`}
+                  width={48}
+                  height={48}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="flex-1 space-y-1">
+                <h3 className="text-lg font-semibold text-blue-600">{service.title}</h3>
+                <p className="font-semibold">Provided by: {service.company}</p>
+                <p className="text-muted-foreground">{service.location}</p>
+                {service.responseTime && (
+                  <div className="flex items-center text-green-600">
+                    <Clock className="w-4 h-4 mr-2" />
+                    <span className="text-sm">{service.responseTime}</span>
+                  </div>
+                )}
+              </div>
+              <Button variant="ghost" size="icon">
+                <ChevronRight className="h-4 w-4" />
+              </Button>
             </div>
-            <div className="flex-1 space-y-1">
-              <h3 className="text-xl font-semibold text-blue-600">{service.title}</h3>
-              <p className="font-semibold">Provided by: {service.company}</p>
-              <p className="text-muted-foreground">{service.location}</p>
-              {service.responseTime && (
-                <div className="flex items-center text-green-600">
-                  <Clock className="w-4 h-4 mr-2" />
-                  <span className="text-sm">{service.responseTime}</span>
-                </div>
-              )}
-            </div>
-            <Button variant="ghost" size="icon">
-              <ChevronRight className="h-4 w-4" />
-            </Button>
-          </div>
+          </motion.div>
         ))}
       </div>
     </div>

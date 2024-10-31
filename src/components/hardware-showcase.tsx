@@ -3,6 +3,7 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import Image from "next/image"
 import Link from "next/link"
+import { motion } from "framer-motion"
 
 const hardwareData = [
   {
@@ -48,39 +49,47 @@ export function HardwareShowcase() {
     <div className="w-full">
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
         {hardwareData.map((hardware, index) => (
-          <Card key={index} className="overflow-hidden relative flex flex-col">
-            <div className="absolute top-2 right-2 w-8 h-8 rounded-full overflow-hidden border-2 border-white z-10">
-              <Image
-                src={hardware.logo}
-                alt={`${hardware.owner} logo`}
-                width={32}
-                height={32}
-                className="object-cover"
-              />
-            </div>
-            <div className="h-32 relative">
-              <Image
-                src={hardware.image}
-                alt={hardware.name}
-                layout="fill"
-                objectFit="cover"
-                className="rounded-t-xl"
-              />
-            </div>
-            <CardHeader className="pb-2 pt-3">
-              <CardTitle className="text-lg">{hardware.name}</CardTitle>
-              <CardDescription>{hardware.type}</CardDescription>
-            </CardHeader>
-            <CardContent className="flex-grow">
-              <p className="text-sm mb-2 line-clamp-3">{hardware.description}</p>
-              <div className="text-sm">
-                <p><strong>Owner:</strong> {hardware.owner}</p>
-                <Link href={`https://${hardware.website}`} target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline break-all">
-                  {hardware.website}
-                </Link>
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, delay: index * 0.1 }}
+            className="h-full"
+          >
+            <Card className="overflow-hidden relative flex flex-col h-full">
+              <div className="absolute top-2 right-2 w-8 h-8 rounded-full overflow-hidden border-2 border-white z-10">
+                <Image
+                  src={hardware.logo}
+                  alt={`${hardware.owner} logo`}
+                  width={32}
+                  height={32}
+                  className="object-cover"
+                />
               </div>
-            </CardContent>
-          </Card>
+              <div className="h-32 relative">
+                <Image
+                  src={hardware.image}
+                  alt={hardware.name}
+                  layout="fill"
+                  objectFit="cover"
+                  className="rounded-t-xl"
+                />
+              </div>
+              <CardHeader className="pb-2 pt-3">
+                <CardTitle className="text-lg">{hardware.name}</CardTitle>
+                <CardDescription>{hardware.type}</CardDescription>
+              </CardHeader>
+              <CardContent className="flex-grow">
+                <p className="text-sm mb-2 line-clamp-3">{hardware.description}</p>
+                <div className="text-sm">
+                  <p><strong>Owner:</strong> {hardware.owner}</p>
+                  <Link href={`https://${hardware.website}`} target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline break-all">
+                    {hardware.website}
+                  </Link>
+                </div>
+              </CardContent>
+            </Card>
+          </motion.div>
         ))}
       </div>
     </div>

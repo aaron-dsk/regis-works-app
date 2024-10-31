@@ -8,6 +8,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Search } from "lucide-react"
+import { motion } from "framer-motion"
 
 export interface DataGridItem {
   id: number;
@@ -31,8 +32,8 @@ interface DataGridProps {
 
 function DataCard({ item, fields }: { item: DataGridItem; fields: DataGridProps['fields'] }) {
   return (
-    <Card className="dark:bg-gray-800 text-card-foreground border border-border">
-      <CardContent className="p-4">
+    <Card className="dark:bg-gray-800 text-card-foreground border border-border h-full">
+      <CardContent className="p-4 h-full">
         {fields.map((field) => (
           <div key={field.key} className="mb-2">
             <p className="text-sm font-semibold">{field.label}:</p>
@@ -97,8 +98,16 @@ export function DataGrid({ data, fields, filters = [] }: DataGridProps) {
         ))}
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {filteredData.map((item) => (
-          <DataCard key={item.id} item={item} fields={fields} />
+        {filteredData.map((item, index) => (
+          <motion.div
+            key={item.id}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, delay: index * 0.1 }}
+            className="h-full"
+          >
+            <DataCard key={item.id} item={item} fields={fields} />
+          </motion.div>
         ))}
       </div>
     </div>

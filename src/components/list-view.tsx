@@ -8,6 +8,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { Input } from "@/components/ui/input"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Search } from "lucide-react"
+import { motion } from "framer-motion"
 
 export interface ListViewItem {
   id: number;
@@ -140,17 +141,24 @@ export function ListView({ title, data, columns, filters = [] }: ListViewProps) 
             </TableRow>
           </TableHeader>
           <TableBody>
-            {filteredAndSortedData.map((item) => (
-              <TableRow key={item.id}>
+            {filteredAndSortedData.map((item, index) => (
+              <motion.tr
+                key={item.id}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: index * 0.1 }}
+                className="w-full"
+              >
                 {columns.map((column) => (
                   <TableCell 
                     key={column.key} 
                     style={{ width: getColumnWidth(column.key) }}
+                    className="align-middle"
                   >
                     {column.render(item)}
                   </TableCell>
                 ))}
-              </TableRow>
+              </motion.tr>
             ))}
           </TableBody>
         </Table>

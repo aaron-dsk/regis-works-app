@@ -2,6 +2,7 @@
 
 import React from 'react'
 import { MoreVertical } from 'lucide-react'
+import { motion } from "framer-motion"
 
 type DataSource = {
   name: string
@@ -69,51 +70,59 @@ export function MedicalDataCards() {
     <div className="w-full">
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
         {dataSources.map((source, index) => (
-          <div key={index} className="bg-white shadow-md rounded-lg overflow-hidden">
-            <div className="p-4">
-              <div className="flex justify-between items-start">
-                <div>
-                  <h3 className="text-lg font-semibold text-gray-900">{source.name}</h3>
-                  <p className="text-sm text-gray-500">{source.type}</p>
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, delay: index * 0.1 }}
+            className="h-full"
+          >
+            <div className="bg-white shadow-md rounded-lg overflow-hidden h-full flex flex-col">
+              <div className="p-4 flex-grow">
+                <div className="flex justify-between items-start">
+                  <div>
+                    <h3 className="text-lg font-semibold text-gray-900">{source.name}</h3>
+                    <p className="text-sm text-gray-500">{source.type}</p>
+                  </div>
+                  <button className="text-gray-400 hover:text-gray-500">
+                    <MoreVertical className="h-5 w-5" />
+                  </button>
                 </div>
-                <button className="text-gray-400 hover:text-gray-500">
-                  <MoreVertical className="h-5 w-5" />
-                </button>
-              </div>
-              <div className="mt-4 space-y-2">
-                <div className="flex justify-between">
-                  <span className="text-sm font-medium text-gray-500">Country</span>
-                  <span className="text-sm text-gray-900">
-                    {source.country === 'FRA' ? '🇫🇷' : '🇩🇪'} {source.country}
-                  </span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-sm font-medium text-gray-500">Records</span>
-                  <span className="text-sm text-gray-900">{source.records.toLocaleString()}</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-sm font-medium text-gray-500">Date Range</span>
-                  <span className="text-sm text-gray-900">{source.dateRange}</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-sm font-medium text-gray-500">Status</span>
-                  <span className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${
-                    source.status === 'Ongoing' ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-800'
-                  }`}>
-                    {source.status}
-                  </span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-sm font-medium text-gray-500">Refreshed</span>
-                  <span className="text-sm text-gray-900">{source.refreshed}</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-sm font-medium text-gray-500">Progress</span>
-                  <CircularProgressBar progress={source.progress} />
+                <div className="mt-4 space-y-2">
+                  <div className="flex justify-between">
+                    <span className="text-sm font-medium text-gray-500">Country</span>
+                    <span className="text-sm text-gray-900">
+                      {source.country === 'FRA' ? '🇫🇷' : '🇩🇪'} {source.country}
+                    </span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-sm font-medium text-gray-500">Records</span>
+                    <span className="text-sm text-gray-900">{source.records.toLocaleString()}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-sm font-medium text-gray-500">Date Range</span>
+                    <span className="text-sm text-gray-900">{source.dateRange}</span>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <span className="text-sm font-medium text-gray-500">Status</span>
+                    <span className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${
+                      source.status === 'Ongoing' ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-800'
+                    }`}>
+                      {source.status}
+                    </span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-sm font-medium text-gray-500">Refreshed</span>
+                    <span className="text-sm text-gray-900">{source.refreshed}</span>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <span className="text-sm font-medium text-gray-500">Progress</span>
+                    <CircularProgressBar progress={source.progress} />
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
     </div>

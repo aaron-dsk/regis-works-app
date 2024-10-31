@@ -3,6 +3,7 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import Image from "next/image"
 import Link from "next/link"
+import { motion } from "framer-motion"
 
 const softwareData = [
   {
@@ -52,28 +53,36 @@ export function SoftwareShowcase() {
     <div className="w-full">
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
         {softwareData.map((software, index) => (
-          <Card key={index} className="flex flex-col h-full">
-            <Image
-              src={software.image}
-              alt={software.name}
-              width={300}
-              height={200}
-              className="w-full h-40 object-cover"
-            />
-            <CardHeader className="pb-2">
-              <CardTitle className="text-lg">{software.name}</CardTitle>
-              <CardDescription>{software.type}</CardDescription>
-            </CardHeader>
-            <CardContent className="flex-grow">
-              <p className="text-sm mb-4">{software.description}</p>
-              <div className="text-sm">
-                <p><strong>Owner:</strong> {software.owner}</p>
-                <Link href={`https://${software.website}`} target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">
-                  {software.website}
-                </Link>
-              </div>
-            </CardContent>
-          </Card>
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, delay: index * 0.1 }}
+            className="h-full"
+          >
+            <Card className="flex flex-col h-full">
+              <Image
+                src={software.image}
+                alt={software.name}
+                width={300}
+                height={200}
+                className="w-full h-40 object-cover"
+              />
+              <CardHeader className="pb-2">
+                <CardTitle className="text-lg">{software.name}</CardTitle>
+                <CardDescription>{software.type}</CardDescription>
+              </CardHeader>
+              <CardContent className="flex-grow">
+                <p className="text-sm mb-4">{software.description}</p>
+                <div className="text-sm">
+                  <p><strong>Owner:</strong> {software.owner}</p>
+                  <Link href={`https://${software.website}`} target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">
+                    {software.website}
+                  </Link>
+                </div>
+              </CardContent>
+            </Card>
+          </motion.div>
         ))}
       </div>
     </div>
