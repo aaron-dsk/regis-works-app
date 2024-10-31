@@ -31,7 +31,7 @@ export function SideBarNav() {
         <div className="px-4 py-2 space-y-1">
           {menuItems.map((item) => (
             <Link key={item.name} href={item.path}>
-              <Button variant="ghost" className={`w-full justify-start ${isActive(item.path) ? 'bg-gray-800 text-gray-50' : ''}`}>
+              <Button variant="ghost" className={`w-full justify-start ${isActive(item.path) ? 'bg-blue-600 text-gray-50' : ''}`}>
                 <item.icon className="mr-2 h-4 w-4" />
                 {item.name}
               </Button>
