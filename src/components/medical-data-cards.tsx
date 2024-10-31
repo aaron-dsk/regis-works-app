@@ -1,8 +1,10 @@
 'use client'
 
-import React from 'react'
-import { MoreVertical } from 'lucide-react'
+import React, { useState, useMemo } from 'react'
+import { MoreVertical, Search } from 'lucide-react'
 import { motion } from "framer-motion"
+import { Input } from "@/components/ui/input"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 
 type DataSource = {
   name: string
@@ -66,10 +68,85 @@ const CircularProgressBar = ({ progress }: { progress: number }) => {
 }
 
 export function MedicalDataCards() {
+  const filters = [
+    {
+      key: "name",
+      title: "Name",
+      type: "text"
+    },
+    {
+      key: "type",
+      title: "Type",
+      type: "select",
+      options: ["EMR", "Pharmacy (LRx)", "Registry", "Claims", "Patient Charts"]
+    },
+    {
+      key: "country",
+      title: "Country",
+      type: "select",
+      options: ["FRA", "DEU"]
+    },
+    {
+      key: "status",
+      title: "Status",
+      type: "select",
+      options: ["Ongoing", "Decommissioned"]
+    }
+  ]
+
+  const [filterValues, setFilterValues] = useState<Record<string, string>>(
+    Object.fromEntries(filters.map(filter => [filter.key, ""]))
+  )
+
+  const handleFilterChange = (key: string, value: string) => {
+    setFilterValues((prev) => ({ ...prev, [key]: value }))
+  }
+
+  const filteredData = useMemo(() => {
+    return dataSources.filter((item) => {
+      return filters.every(filter => {
+        const filterValue = filterValues[filter.key].toLowerCase()
+        if (filterValue === "") return true
+        const itemValue = item[filter.key as keyof typeof item]
+        return String(itemValue).toLowerCase().includes(filterValue)
+      })
+    })
+  }, [filterValues])
+
   return (
     <div className="w-full">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 mb-6">
+        {filters.map((filter) => (
+          <div key={filter.key} className="relative">
+            {filter.type === 'select' ? (
+              <Select value={filterValues[filter.key]} onValueChange={(value) => handleFilterChange(filter.key, value)}>
+                <SelectTrigger>
+                  <SelectValue placeholder={`Filter by ${filter.title}`} />
+                </SelectTrigger>
+                <SelectContent>
+                  {filter.options?.map((option) => (
+                    <SelectItem key={option} value={option}>{option}</SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            ) : (
+              <div className="relative">
+                <Input
+                  type="text"
+                  placeholder={`Filter by ${filter.title}`}
+                  value={filterValues[filter.key]}
+                  onChange={(e) => handleFilterChange(filter.key, e.target.value)}
+                  className="pl-10"
+                />
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={18} />
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-        {dataSources.map((source, index) => (
+        {filteredData.map((source, index) => (
           <motion.div
             key={index}
             initial={{ opacity: 0, y: 20 }}
