@@ -1,6 +1,10 @@
 'use client'
 
+import { useState, useMemo } from "react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Input } from "@/components/ui/input"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { Search } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 import { motion } from "framer-motion"
@@ -49,10 +53,78 @@ const softwareData = [
 ]
 
 export function SoftwareShowcase() {
+  const filters = [
+    {
+      key: "name",
+      title: "Name",
+      type: "text"
+    },
+    {
+      key: "type",
+      title: "Type",
+      type: "select",
+      options: ["Open Source", "Private"]
+    },
+    {
+      key: "owner",
+      title: "Owner",
+      type: "text"
+    }
+  ]
+
+  const [filterValues, setFilterValues] = useState<Record<string, string>>(
+    Object.fromEntries(filters.map(filter => [filter.key, ""]))
+  )
+
+  const handleFilterChange = (key: string, value: string) => {
+    setFilterValues((prev) => ({ ...prev, [key]: value }))
+  }
+
+  const filteredData = useMemo(() => {
+    return softwareData.filter((item) => {
+      return filters.every(filter => {
+        const filterValue = filterValues[filter.key].toLowerCase()
+        if (filterValue === "") return true
+        const itemValue = item[filter.key as keyof typeof item]
+        return String(itemValue).toLowerCase().includes(filterValue)
+      })
+    })
+  }, [filterValues])
+
   return (
     <div className="w-full">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 mb-6">
+        {filters.map((filter) => (
+          <div key={filter.key} className="relative">
+            {filter.type === 'select' ? (
+              <Select value={filterValues[filter.key]} onValueChange={(value) => handleFilterChange(filter.key, value)}>
+                <SelectTrigger>
+                  <SelectValue placeholder={`Filter by ${filter.title}`} />
+                </SelectTrigger>
+                <SelectContent>
+                  {filter.options?.map((option) => (
+                    <SelectItem key={option} value={option}>{option}</SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            ) : (
+              <div className="relative">
+                <Input
+                  type="text"
+                  placeholder={`Filter by ${filter.title}`}
+                  value={filterValues[filter.key]}
+                  onChange={(e) => handleFilterChange(filter.key, e.target.value)}
+                  className="pl-10"
+                />
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={18} />
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
-        {softwareData.map((software, index) => (
+        {filteredData.map((software, index) => (
           <motion.div
             key={index}
             initial={{ opacity: 0, y: 20 }}
