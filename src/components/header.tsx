@@ -8,10 +8,10 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import { FC, HTMLAttributes } from 'react';
-import { useTheme } from 'next-themes'
+import { FC, HTMLAttributes, useState } from 'react'
+
 export const Header: FC<HTMLAttributes<HTMLDivElement>> = ({ className, ...props }) => {
-  const { theme, setTheme } = useTheme()
+  const [isDark, setIsDark] = useState(false)
 
   return (
     <header className={`flex shadow-sm justify-between items-center space-x-2 p-4 ${className}`} {...props}>
@@ -40,9 +40,9 @@ export const Header: FC<HTMLAttributes<HTMLDivElement>> = ({ className, ...props
           variant="ghost"
           size="icon"
           className="h-8 w-8"
-          onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+          onClick={() => setIsDark(!isDark)}
         >
-          {theme === "dark" ? (
+          {isDark ? (
             <Sun className="h-4 w-4" />
           ) : (
             <Moon className="h-4 w-4" />
