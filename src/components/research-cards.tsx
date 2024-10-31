@@ -5,6 +5,9 @@ import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Users } from "lucide-react"
+import { useState, useMemo } from "react"
+import { Input } from "@/components/ui/input"
+import { Search } from "lucide-react"
 
 export function ResearchCards() {
   const projects = [
@@ -49,67 +52,128 @@ export function ResearchCards() {
     },
   ]
 
+  const filters = [
+    {
+      key: "title",
+      title: "Title",
+      type: "text"
+    },
+    {
+      key: "institution",
+      title: "Institution",
+      type: "text"
+    },
+    {
+      key: "focus",
+      title: "Focus",
+      type: "text"
+    },
+    {
+      key: "partnership",
+      title: "Partnership",
+      type: "text"
+    }
+  ]
+
+  const [filterValues, setFilterValues] = useState<Record<string, string>>(
+    Object.fromEntries(filters.map(filter => [filter.key, ""]))
+  )
+
+  const handleFilterChange = (key: string, value: string) => {
+    setFilterValues((prev) => ({ ...prev, [key]: value }))
+  }
+
+  const filteredData = useMemo(() => {
+    return projects.filter((item) => {
+      return filters.every(filter => {
+        const filterValue = filterValues[filter.key].toLowerCase()
+        if (filterValue === "") return true
+        const itemValue = item[filter.key as keyof typeof item]
+        return String(itemValue).toLowerCase().includes(filterValue)
+      })
+    })
+  }, [filterValues])
+
   return (
-    <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-      {projects.map((project, index) => (
-        <motion.div
-          key={project.title}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4, delay: index * 0.1 }}
-        >
-          <Card className="overflow-hidden bg-white flex flex-col h-[600px]">
+    <div className="space-y-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
+        {filters.map((filter) => (
+          <div key={filter.key} className="relative">
             <div className="relative">
-              <img
-                src={project.image}
-                alt={`${project.title} visual representation`}
-                className="w-full h-48 object-cover"
+              <Input
+                type="text"
+                placeholder={`Filter by ${filter.title}`}
+                value={filterValues[filter.key]}
+                onChange={(e) => handleFilterChange(filter.key, e.target.value)}
+                className="pl-10"
               />
-              <div className="absolute top-2 left-2 w-10 h-10 rounded-full overflow-hidden border-2 border-white bg-white shadow-md">
-                <img
-                  src={project.logoImage}
-                  alt={`${project.institution} logo`}
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <Badge
-                variant="secondary"
-                className="absolute top-2 right-2 font-medium"
-              >
-                Research Project
-              </Badge>
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={18} />
             </div>
-            <CardHeader className="space-y-2">
-              <h3 className="text-lg font-bold tracking-tight">{project.title}</h3>
-              <p className="text-sm text-muted-foreground">{project.institution}</p>
-            </CardHeader>
-            <CardContent className="space-y-4 flex-grow overflow-y-auto">
-              <div className="space-y-2">
-                <h4 className="font-semibold">Research Focus</h4>
-                <p className="text-sm text-muted-foreground">{project.focus}</p>
+          </div>
+        ))}
+      </div>
+
+      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {filteredData.map((project, index) => (
+          <motion.div
+            key={project.title}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, delay: index * 0.1 }}
+          >
+            <Card className="overflow-hidden bg-white flex flex-col h-[600px]">
+              <div className="relative">
+                <img
+                  src={project.image}
+                  alt={`${project.title} visual representation`}
+                  className="w-full h-48 object-cover"
+                />
+                <div className="absolute top-2 left-2 w-10 h-10 rounded-full overflow-hidden border-2 border-white bg-white shadow-md">
+                  <img
+                    src={project.logoImage}
+                    alt={`${project.institution} logo`}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <Badge
+                  variant="secondary"
+                  className="absolute top-2 right-2 font-medium"
+                >
+                  Research Project
+                </Badge>
               </div>
-              <div className="space-y-2">
-                <h4 className="font-semibold">Partnership</h4>
-                <p className="text-sm text-muted-foreground">{project.partnership}</p>
-              </div>
-              <div className="space-y-2">
-                <h4 className="font-semibold">Impact</h4>
-                <p className="text-sm text-muted-foreground">{project.impact}</p>
-              </div>
-              <div className="space-y-2">
-                <h4 className="font-semibold">Timeline</h4>
-                <p className="text-sm text-muted-foreground">{project.timeline}</p>
-              </div>
-            </CardContent>
-            <CardFooter className="mt-auto">
-              <Button className="w-full">
-                Open Collaboration
-                <Users className="ml-2 h-4 w-4" />
-              </Button>
-            </CardFooter>
-          </Card>
-        </motion.div>
-      ))}
+              <CardHeader className="space-y-2">
+                <h3 className="text-lg font-bold tracking-tight">{project.title}</h3>
+                <p className="text-sm text-muted-foreground">{project.institution}</p>
+              </CardHeader>
+              <CardContent className="space-y-4 flex-grow overflow-y-auto">
+                <div className="space-y-2">
+                  <h4 className="font-semibold">Research Focus</h4>
+                  <p className="text-sm text-muted-foreground">{project.focus}</p>
+                </div>
+                <div className="space-y-2">
+                  <h4 className="font-semibold">Partnership</h4>
+                  <p className="text-sm text-muted-foreground">{project.partnership}</p>
+                </div>
+                <div className="space-y-2">
+                  <h4 className="font-semibold">Impact</h4>
+                  <p className="text-sm text-muted-foreground">{project.impact}</p>
+                </div>
+                <div className="space-y-2">
+                  <h4 className="font-semibold">Timeline</h4>
+                  <p className="text-sm text-muted-foreground">{project.timeline}</p>
+                </div>
+              </CardContent>
+              <CardFooter className="mt-auto">
+                <Button className="w-full">
+                  Open Collaboration
+                  <Users className="ml-2 h-4 w-4" />
+                </Button>
+              </CardFooter>
+            </Card>
+          </motion.div>
+        ))}
+      </div>
     </div>
   )
 }

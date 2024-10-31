@@ -2,6 +2,9 @@
 
 import { motion } from "framer-motion"
 import { Card, CardContent } from "@/components/ui/card"
+import { useState, useMemo } from "react"
+import { Input } from "@/components/ui/input"
+import { Search } from "lucide-react"
 
 export function Blog() {
   const projects = [
@@ -31,11 +34,65 @@ export function Blog() {
     }
   ]
 
+  const filters = [
+    {
+      key: "title",
+      title: "Title",
+      type: "text"
+    },
+    {
+      key: "organization",
+      title: "Organization",
+      type: "text"
+    },
+    {
+      key: "location",
+      title: "Location",
+      type: "text"
+    }
+  ]
+
+  const [filterValues, setFilterValues] = useState<Record<string, string>>(
+    Object.fromEntries(filters.map(filter => [filter.key, ""]))
+  )
+
+  const handleFilterChange = (key: string, value: string) => {
+    setFilterValues((prev) => ({ ...prev, [key]: value }))
+  }
+
+  const filteredData = useMemo(() => {
+    return projects.filter((item) => {
+      return filters.every(filter => {
+        const filterValue = filterValues[filter.key].toLowerCase()
+        if (filterValue === "") return true
+        const itemValue = item[filter.key as keyof typeof item]
+        return String(itemValue).toLowerCase().includes(filterValue)
+      })
+    })
+  }, [filterValues])
+
   return (
     <div className="min-h-screen bg-background text-foreground">
       <div className="max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 mb-6">
+          {filters.map((filter) => (
+            <div key={filter.key} className="relative">
+              <div className="relative">
+                <Input
+                  type="text"
+                  placeholder={`Filter by ${filter.title}`}
+                  value={filterValues[filter.key]}
+                  onChange={(e) => handleFilterChange(filter.key, e.target.value)}
+                  className="pl-10"
+                />
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={18} />
+              </div>
+            </div>
+          ))}
+        </div>
+
         <main className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project, index) => (
+          {filteredData.map((project, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 20 }}

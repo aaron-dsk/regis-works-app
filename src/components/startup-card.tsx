@@ -4,6 +4,10 @@ import { motion } from "framer-motion"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import Image from "next/image"
+import { useState, useMemo } from "react"
+import { Input } from "@/components/ui/input"
+import { Select, SelectContent, SelectTrigger, SelectValue, SelectItem } from "@/components/ui/select"
+import { Search } from "lucide-react"
 
 const startups = [
   {
@@ -45,44 +49,119 @@ const startups = [
 ]
 
 export function StartupCards() {
+  const filters = [
+    {
+      key: "name",
+      title: "Name",
+      type: "text"
+    },
+    {
+      key: "researchFocus",
+      title: "Research Focus",
+      type: "text"
+    },
+    {
+      key: "collaborationType",
+      title: "Collaboration Type",
+      type: "select",
+      options: ["Open", "Closed"]
+    },
+    {
+      key: "fundingStage",
+      title: "Funding Stage",
+      type: "text"
+    }
+  ]
+
+  const [filterValues, setFilterValues] = useState<Record<string, string>>(
+    Object.fromEntries(filters.map(filter => [filter.key, ""]))
+  )
+
+  const handleFilterChange = (key: string, value: string) => {
+    setFilterValues((prev) => ({ ...prev, [key]: value }))
+  }
+
+  const filteredData = useMemo(() => {
+    return startups.filter((item) => {
+      return filters.every(filter => {
+        const filterValue = filterValues[filter.key].toLowerCase()
+        if (filterValue === "") return true
+        const itemValue = item[filter.key as keyof typeof item]
+        return String(itemValue).toLowerCase().includes(filterValue)
+      })
+    })
+  }, [filterValues])
+
   return (
-    <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {startups.map((project, index) => (
-        <motion.div
-          key={index}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4, delay: index * 0.1 }}
-          className="h-full"
-        >
-          <Card className="flex flex-col h-full">
-            <CardHeader className="p-0">
-              <Image
-                src={project.image}
-                alt={project.name}
-                width={300}
-                height={200}
-                className="w-full h-48 object-cover rounded-t-lg"
-              />
-            </CardHeader>
-            <CardContent className="flex-grow p-4">
-              <CardTitle className="text-lg font-bold mb-2">{project.name}</CardTitle>
-              <div className="space-y-2">
-                <p><strong>Research Focus:</strong> {project.researchFocus}</p>
-                <p><strong>Partnership:</strong> {project.partnershipOpportunities}</p>
-                <p><strong>Funding Stage:</strong> {project.fundingStage}</p>
-                <p><strong>Institution:</strong> {project.institutionInvolvement}</p>
-                <p><strong>Impact:</strong> {project.impact}</p>
-                <p><strong>Timeline:</strong> {project.timeline}</p>
-                <p><strong>Needs:</strong> {project.resourceNeeds}</p>
-                <Badge variant={project.collaborationType === 'Open' ? 'default' : 'secondary'}>
-                  {project.collaborationType} Collaboration
-                </Badge>
+    <div className="w-full space-y-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
+        {filters.map((filter) => (
+          <div key={filter.key} className="relative">
+            {filter.type === 'select' ? (
+              <Select value={filterValues[filter.key]} onValueChange={(value) => handleFilterChange(filter.key, value)}>
+                <SelectTrigger>
+                  <SelectValue placeholder={`Filter by ${filter.title}`} />
+                </SelectTrigger>
+                <SelectContent>
+                  {filter.options?.map((option) => (
+                    <SelectItem key={option} value={option}>{option}</SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            ) : (
+              <div className="relative">
+                <Input
+                  type="text"
+                  placeholder={`Filter by ${filter.title}`}
+                  value={filterValues[filter.key]}
+                  onChange={(e) => handleFilterChange(filter.key, e.target.value)}
+                  className="pl-10"
+                />
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={18} />
               </div>
-            </CardContent>
-          </Card>
-        </motion.div>
-      ))}
+            )}
+          </div>
+        ))}
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {filteredData.map((project, index) => (
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, delay: index * 0.1 }}
+            className="h-full"
+          >
+            <Card className="flex flex-col h-full">
+              <CardHeader className="p-0">
+                <Image
+                  src={project.image}
+                  alt={project.name}
+                  width={300}
+                  height={200}
+                  className="w-full h-48 object-cover rounded-t-lg"
+                />
+              </CardHeader>
+              <CardContent className="flex-grow p-4">
+                <CardTitle className="text-lg font-bold mb-2">{project.name}</CardTitle>
+                <div className="space-y-2">
+                  <p><strong>Research Focus:</strong> {project.researchFocus}</p>
+                  <p><strong>Partnership:</strong> {project.partnershipOpportunities}</p>
+                  <p><strong>Funding Stage:</strong> {project.fundingStage}</p>
+                  <p><strong>Institution:</strong> {project.institutionInvolvement}</p>
+                  <p><strong>Impact:</strong> {project.impact}</p>
+                  <p><strong>Timeline:</strong> {project.timeline}</p>
+                  <p><strong>Needs:</strong> {project.resourceNeeds}</p>
+                  <Badge variant={project.collaborationType === 'Open' ? 'default' : 'secondary'}>
+                    {project.collaborationType} Collaboration
+                  </Badge>
+                </div>
+              </CardContent>
+            </Card>
+          </motion.div>
+        ))}
+      </div>
     </div>
   )
 }
