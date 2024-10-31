@@ -4,69 +4,81 @@ import { useState } from 'react'
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 
 const helpTopics = [
-  { id: 'create-investment', title: 'How do I create an investment commitment on Republic?' },
-  { id: 'how-much-invest', title: 'How much can I invest?' },
-  { id: 'waitlist', title: 'How does the waitlist work?' },
-  { id: 'who-can-invest', title: 'Who can invest?' },
-  { id: 'international-investors', title: 'Can international investors invest?' },
-  { id: 'calculate-net-worth', title: 'How do I calculate my net worth?' },
-  { id: 'accredited-invest', title: 'Do I have to be accredited to invest?' },
-  { id: 'investment-limit', title: 'How is my investment limit calculated?' },
-  { id: 'securities-crowdfunding', title: 'What is securities crowdfunding?' },
-  { id: 'us-citizen', title: 'Do I have to be a US citizen to invest?' },
-  { id: 'rolling-close', title: 'What is a rolling close?' },
-  { id: 'canadian-investor', title: 'I am a Canadian investor, can I participate?' },
-  { id: 'terms', title: 'What do terms Issuer, Offering and others mean?' },
-  { id: 'minimum-investment', title: 'What is the minimum investment amount?' },
-  { id: 'republic-fees', title: 'What fees does Republic charge?' },
+  { id: 'registration', title: 'How to Register on RDAxis' },
+  { id: 'user-types', title: 'User Types on RDAxis' },
+  { id: 'onboarding', title: 'Completing the Onboarding Process' },
+  { id: 'profile', title: 'Customizing Your Profile' },
+  { id: 'resource-types', title: 'Types of Resources Available' },
+  { id: 'resource-access', title: 'How to Access and Filter Resources' }
 ]
 
 const contentMap: { [key: string]: string } = {
-  'how-much-invest': `
-    How much you can invest in the different offerings on the Republic platform
-    primarily depends on the type of offering you are investing in and your accredited
-    investor status. For some offerings, there may be a set minimum and maximum
-    investment.
+  'registration': `Registration is the first step to unlocking the resources and connections on RDAxis. To get started, visit the RDAxis homepage and click the "Sign Up" button. You'll need to enter basic information, including your name, email address, and password.
 
-    To know how much you can invest in any offering on Republic, you must first
-    understand whether you qualify as an accredited investor or not.
+After filling out this initial information, RDAxis will send a verification link to your email. Click the link to verify your account.
 
-    Many of the offerings hosted on Republic are listed under Regulation
-    Crowdfunding, also referred to as Reg CF. If you are an accredited investor, there
-    are no investment limits for investing in Reg CF campaigns.
+Once verified, return to the platform and select your user type: Research Organization, Advisor, Investor, or Researcher. Each user type offers unique tools and resources tailored to your role within the research and innovation ecosystem.
 
-    Note: Once you have self-certified yourself (or you have previously been verified)
-    as an accredited investor on the platform, you are able to invest without limits.
-    Note, your self-certification may be randomly selected for audit or questioned, so
-    please be truthful as providing a false representation is a violation of our terms of
-    service and can result in your accounting being suspended.
+Follow the guided setup to complete your profile, which helps you get noticed and find the right connections on the platform.`,
 
-    If you're a non-accredited investor - most investors are - the amount you can
-    invest under Regulation Crowdfunding during any 12 month period depends on
-    your annual income level and net worth. As a non-accredited investor, you can
-    invest the greater of
+  'user-types': `RDAxis is designed to support four main types of users:
 
-    ��� $2,500; or
-    • If your annual income or net worth is less than $124,000, you can invest 5% of
-      the greater of your annual income or net worth; or
-    • If both your income and net worth are equal to or more than $124,000, you
-      can invest 10% of the greater of your annual income or net worth, not to
-      exceed an amount of $124,000.
-    • Remember this limit applies across all Reg CF deals, so if you invest in Reg CF
-      deals on other platforms, you will need to disclose this too (and keep the
-      disclosure up to date), so we can accurately calculate your limit. You can do
-      this in your investor profile.
-  `,
-  // Add content for other topics here
+Research Organizations (like university departments, corporate R&D teams, or NGOs focused on research) have access to tools for connecting with researchers, advisors, and potential funders to support their projects.
+
+Advisors are professionals with specific expertise who can offer guidance to projects and initiatives on RDAxis. They can browse opportunities to lend their knowledge to innovative research efforts.
+
+Investors (accredited or institutional) can discover projects, startups, and initiatives that align with their investment goals. They receive priority access to funding-related features and programs on the platform.
+
+Researchers are individuals conducting or supporting research. RDAxis provides them with tools for collaboration, resource access, and potential testing partnerships.`,
+
+  'onboarding': `After you register, RDAxis will guide you through an onboarding process tailored to your user type. This step-by-step process helps you fill out essential details that make it easier for other users to find and connect with you.
+
+Research Organizations may be asked to outline their research areas and resource needs, while Advisors can showcase their expertise and availability.
+
+Investors are encouraged to detail their funding criteria, and Researchers can highlight their skills, tools, and research experience.
+
+By completing onboarding thoroughly, you increase your visibility to other users and help ensure you're matched with the right opportunities on the platform.`,
+
+  'profile': `Each user type on RDAxis has unique profile customization options to enhance their experience. Once registered, navigate to your account settings and explore the fields available for customization.
+
+Research Organizations can upload descriptions of their current projects, resource offerings, and collaboration interests.
+
+Advisors can highlight their past experience, notable achievements, and areas of expertise.
+
+Investors can specify funding interests and criteria, and Researchers can list their skills, technology proficiencies, and preferred research areas.
+
+Customizing your profile is essential for standing out on RDAxis and making meaningful connections with others in the research community.`,
+
+  'resource-types': `RDAxis organizes its research resources into multiple categories, making it easy for users to find the support they need:
+
+Human Capital includes experts, researchers, and other professionals who can contribute to a project. Profiles in this category highlight individuals' relevant experience, technical skills, tools they use, and personal information like location and age, all to help teams identify the right people for their projects.
+
+Testing Resources are specifically for alpha and beta testing programs. This category is perfect for organizations that require testers or researchers seeking practical application experiences in new studies or innovations.
+
+Software Resources allow companies and universities to showcase software available for use. This section includes open-source tools, privately-owned software, and software developed by universities. Organizations can advertise their software for broader collaboration.
+
+Hardware Resources provide access to specialized equipment. Universities, research centers, and companies can list hardware such as supercomputers, advanced lab equipment, and one-of-a-kind devices. For example, UF might list its Nvidia-donated supercomputer, or Misiones may offer access to the Da Vinci machine. These resources can be rented, loaned, or shared in collaborative projects.
+
+Data Resources encompass datasets, research data, and other information assets. Organizations can provide or request data sets to aid in specific research projects, fostering data sharing across disciplines.
+
+Programs and Services include offerings like prototyping, product design, and manufacturing. Organizations can request these services or offer them to other users, facilitating collaboration on the practical aspects of research and development.`,
+
+  'resource-access': `RDAxis makes finding the right resource easy through its filtering tools. At the top of the Research Resources tab, you'll see filter options allowing you to select the types of resources you need.
+
+You can view a list of all resources or narrow down by specific types, such as Human Capital or Hardware.
+
+Each resource has a detailed profile with descriptions, contact information, and, where applicable, availability.
+
+Saved resources can be accessed from your favorites for quick reference, and you can directly message resource owners if you're interested in collaboration.`
 }
 
 export default function HelpCenter() {
-  const [selectedTopic, setSelectedTopic] = useState('how-much-invest')
+  const [selectedTopic, setSelectedTopic] = useState('registration')
 
   return (
     <div className="flex min-h-screen bg-background text-foreground">
       <aside className="w-1/4 bg-card p-6 overflow-y-auto">
-        <h2 className="text-2xl font-bold mb-4">Getting started</h2>
+        <h2 className="text-2xl font-bold mb-4">Getting Started with RDAxis</h2>
         <nav>
           <ul className="space-y-2">
             {helpTopics.map((topic) => (
