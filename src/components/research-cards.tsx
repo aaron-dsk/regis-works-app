@@ -80,7 +80,7 @@ export function ResearchCards() {
               </Badge>
             </div>
             <CardHeader className="space-y-2">
-              <h3 className="text-2xl font-bold tracking-tight">{project.title}</h3>
+              <h3 className="text-lg font-bold tracking-tight">{project.title}</h3>
               <p className="text-sm text-muted-foreground">{project.institution}</p>
             </CardHeader>
             <CardContent className="space-y-4 flex-grow overflow-y-auto">
