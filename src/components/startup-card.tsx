@@ -64,7 +64,7 @@ export function StartupCards() {
       key: "collaborationType",
       title: "Collaboration Type",
       type: "select",
-      options: ["Open", "Closed"]
+      options: ["All", "Open", "Closed"]
     },
     {
       key: "fundingStage",
@@ -85,7 +85,7 @@ export function StartupCards() {
     return startups.filter((item) => {
       return filters.every(filter => {
         const filterValue = filterValues[filter.key].toLowerCase()
-        if (filterValue === "") return true
+        if (filterValue === "" || filterValue === "all") return true
         const itemValue = item[filter.key as keyof typeof item]
         return String(itemValue).toLowerCase().includes(filterValue)
       })

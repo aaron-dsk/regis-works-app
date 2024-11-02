@@ -59,7 +59,7 @@ export function HardwareShowcase() {
       key: "type",
       title: "Type",
       type: "select",
-      options: ["Private", "University-Owned (University of Florida)"]
+      options: ["All", "Private", "University-Owned (University of Florida)"]
     },
     {
       key: "owner",
@@ -80,7 +80,7 @@ export function HardwareShowcase() {
     return hardwareData.filter((item) => {
       return filters.every(filter => {
         const filterValue = filterValues[filter.key].toLowerCase()
-        if (filterValue === "") return true
+        if (filterValue === "" || filterValue === "all") return true
         const itemValue = item[filter.key as keyof typeof item]
         return String(itemValue).toLowerCase().includes(filterValue)
       })

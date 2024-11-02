@@ -33,7 +33,7 @@ interface ListViewProps {
   }[];
 }
 
-export function ListView({ title, data, columns, filters = [] }: ListViewProps) {
+export function ListView({ data, columns, filters = [] }: ListViewProps) {
   const [sortColumn, setSortColumn] = useState<string>(columns[0].key)
   const [sortDirection, setSortDirection] = useState<"asc" | "desc">("asc")
   const [filterValues, setFilterValues] = useState<Record<string, string>>(
@@ -86,7 +86,6 @@ export function ListView({ title, data, columns, filters = [] }: ListViewProps) 
   const getColumnWidth = (key: string) => {
     switch (key) {
       case 'name': return '150px';
-      case 'age': return '60px';
       case 'bio': return '150px';
       case 'tools': return '180px';
       case 'skills': return '180px';

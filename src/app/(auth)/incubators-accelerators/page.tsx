@@ -75,9 +75,9 @@ const IncuAccele = () => {
 
   const financingFilters = [
     { key: 'name', title: 'Name', type: 'text' as const },
-    { key: 'type', title: 'Type', type: 'select' as const, options: ['Investor', 'Lender', 'Grant'] },
+    { key: 'type', title: 'Type', type: 'select' as const, options: ['All', 'Investor', 'Lender', 'Grant'] },
     { key: 'focusAreas', title: 'Focus Areas', type: 'text' as const },
-    { key: 'stage', title: 'Stage', type: 'select' as const, options: ['Seed', 'Series A', 'Series B', 'Growth'] },
+    { key: 'stage', title: 'Stage', type: 'select' as const, options: ['All', 'Seed', 'Series A', 'Series B', 'Growth'] },
     { key: 'location', title: 'Location', type: 'text' as const },
   ];
 

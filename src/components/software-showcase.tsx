@@ -63,7 +63,7 @@ export function SoftwareShowcase() {
       key: "type",
       title: "Type",
       type: "select",
-      options: ["Open Source", "Private"]
+      options: ["All", "Open Source", "Private"]
     },
     {
       key: "owner",
@@ -84,7 +84,7 @@ export function SoftwareShowcase() {
     return softwareData.filter((item) => {
       return filters.every(filter => {
         const filterValue = filterValues[filter.key].toLowerCase()
-        if (filterValue === "") return true
+        if (filterValue === "" || filterValue === "all") return true
         const itemValue = item[filter.key as keyof typeof item]
         return String(itemValue).toLowerCase().includes(filterValue)
       })

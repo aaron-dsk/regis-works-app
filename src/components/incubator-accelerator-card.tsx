@@ -60,7 +60,7 @@ export function IncubatorAcceleratorCard({
       key: "type",
       title: "Type",
       type: "select",
-      options: ["incubator", "accelerator"]
+      options: ["All", "incubator", "accelerator"]
     },
     {
       key: "location",
@@ -81,12 +81,12 @@ export function IncubatorAcceleratorCard({
     return incubators.filter((item) => {
       return filters.every(filter => {
         const filterValue = filterValues[filter.key].toLowerCase()
-        if (filterValue === "") return true
+        if (filterValue === "" || filterValue === "all") return true
         const itemValue = item[filter.key as keyof typeof item]
         return String(itemValue).toLowerCase().includes(filterValue)
       })
     })
-  }, [filterValues, incubators])
+  }, [filterValues])
 
   return (
     <div className="space-y-6">

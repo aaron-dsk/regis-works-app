@@ -24,7 +24,6 @@ const ResearchResourcesPage = () => {
       id: 1,
       name: "Alice Johnson",
       location: "New York, NY",
-      age: 28,
       bio: "Experienced data scientist with a passion for machine learning and AI applications.",
       tools: ["Python", "TensorFlow", "Jupyter"],
       skills: ["Machine Learning", "Data Analysis", "Statistical Modeling"],
@@ -34,7 +33,6 @@ const ResearchResourcesPage = () => {
       id: 2,
       name: "Dr. Rajesh Patel",
       location: "Boston, MA",
-      age: 42,
       bio: "AI researcher specializing in deep learning for medical image analysis and disease detection.",
       tools: ["PyTorch", "CUDA", "OpenCV"],
       skills: ["Deep Learning", "Computer Vision", "Medical Imaging"],
@@ -44,7 +42,6 @@ const ResearchResourcesPage = () => {
       id: 3,
       name: "Emma Rodriguez",
       location: "San Francisco, CA",
-      age: 31,
       bio: "Bioinformatics expert with experience in genomic data analysis and drug discovery pipelines.",
       tools: ["R", "Bioconductor", "Galaxy"],
       skills: ["Genomics", "Sequence Analysis", "Drug Target Identification"],
@@ -54,7 +51,6 @@ const ResearchResourcesPage = () => {
       id: 4,
       name: "Dr. Sarah Chen",
       location: "Seattle, WA",
-      age: 38,
       bio: "Environmental scientist specializing in climate modeling and data visualization for policy makers.",
       tools: ["MATLAB", "ArcGIS", "Tableau"],
       skills: ["Climate Modeling", "Geospatial Analysis", "Data Visualization"],
@@ -64,7 +60,6 @@ const ResearchResourcesPage = () => {
       id: 5,
       name: "Michael O'Brien",
       location: "Chicago, IL",
-      age: 35,
       bio: "Research software engineer with expertise in high-performance computing and scientific simulations.",
       tools: ["C++", "MPI", "CUDA"],
       skills: ["Parallel Computing", "Algorithm Optimization", "Scientific Computing"],
@@ -74,7 +69,6 @@ const ResearchResourcesPage = () => {
       id: 6,
       name: "Dr. Aisha Mahmood",
       location: "London, UK",
-      age: 40,
       bio: "Neuroscientist specializing in brain-computer interfaces and neural signal processing.",
       tools: ["MATLAB", "LabVIEW", "EEGlab"],
       skills: ["Signal Processing", "Machine Learning", "Experimental Design"],
@@ -93,7 +87,6 @@ const ResearchResourcesPage = () => {
         </div>
       ),
     },
-    { key: 'age', title: 'Age', render: (item: ListViewItem) => item.age },
     {
       key: 'bio',
       title: 'Bio',
@@ -145,7 +138,6 @@ const ResearchResourcesPage = () => {
         </div>
       )
     },
-    { key: 'age', label: 'Age', render: (item: DataGridItem) => item.age },
     { 
       key: 'bio', 
       label: 'Bio', 

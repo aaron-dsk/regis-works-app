@@ -78,7 +78,7 @@ export function MedicalDataCards() {
       key: "type",
       title: "Type",
       type: "select",
-      options: ["EMR", "Pharmacy (LRx)", "Registry", "Claims", "Patient Charts"]
+      options: ["All", "EMR", "Pharmacy (LRx)", "Registry", "Claims", "Patient Charts"]
     },
     {
       key: "country",
@@ -106,7 +106,7 @@ export function MedicalDataCards() {
     return dataSources.filter((item) => {
       return filters.every(filter => {
         const filterValue = filterValues[filter.key].toLowerCase()
-        if (filterValue === "") return true
+        if (filterValue === "" || filterValue === "all") return true
         const itemValue = item[filter.key as keyof typeof item]
         return String(itemValue).toLowerCase().includes(filterValue)
       })
