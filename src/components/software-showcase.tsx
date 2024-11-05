@@ -49,6 +49,30 @@ const softwareData = [
     owner: "GROMACS Development Team",
     website: "gromacs.org",
     image: "/images/software/gromacs.png"
+  },
+  {
+    name: "PyTorch",
+    type: "Open Source",
+    description: "An open source machine learning framework that accelerates the path from research prototyping to production deployment.",
+    owner: "Meta AI Research",
+    website: "pytorch.org",
+    image: "/images/software/pytorch.png"
+  },
+  {
+    name: "Hugging Face",
+    type: "Open Source",
+    description: "A platform providing tools for building, training and deploying ML models. Known for its Transformers library and model hub.",
+    owner: "Hugging Face",
+    website: "huggingface.co",
+    image: "/images/software/HuggingFace.png"
+  },
+  {
+    name: "NVIDIA CUDA Toolkit",
+    type: "Private",
+    description: "A development environment for creating high-performance GPU-accelerated applications, including ML/AI tools and libraries.",
+    owner: "NVIDIA",
+    website: "developer.nvidia.com/cuda-toolkit",
+    image: "/images/software/NvidiaCuda.jpg"
   }
 ]
 
