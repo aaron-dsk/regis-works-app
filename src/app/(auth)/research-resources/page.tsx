@@ -28,6 +28,7 @@ const ResearchResourcesPage = () => {
       tools: ["Python", "TensorFlow", "Jupyter"],
       skills: ["Machine Learning", "Data Analysis", "Statistical Modeling"],
       relevantExperience: "5 years in data science roles at tech startups",
+      avatar: "/images/hc-popup/alice.png"
     },
     {
       id: 2,
@@ -37,6 +38,7 @@ const ResearchResourcesPage = () => {
       tools: ["PyTorch", "CUDA", "OpenCV"],
       skills: ["Deep Learning", "Computer Vision", "Medical Imaging"],
       relevantExperience: "10 years in AI research, 5 years focused on medical applications",
+      avatar: "/images/hc-popup/rajesh.png"
     },
     {
       id: 3,
@@ -46,6 +48,7 @@ const ResearchResourcesPage = () => {
       tools: ["R", "Bioconductor", "Galaxy"],
       skills: ["Genomics", "Sequence Analysis", "Drug Target Identification"],
       relevantExperience: "7 years in pharmaceutical research, 3 years in a biotech startup",
+      avatar: "/images/hc-popup/emma.png"
     },
     {
       id: 4,
@@ -55,6 +58,7 @@ const ResearchResourcesPage = () => {
       tools: ["MATLAB", "ArcGIS", "Tableau"],
       skills: ["Climate Modeling", "Geospatial Analysis", "Data Visualization"],
       relevantExperience: "8 years in environmental research, 3 years consulting for government agencies",
+      avatar: "/images/hc-popup/sarah.png"
     },
     {
       id: 5,
@@ -64,6 +68,7 @@ const ResearchResourcesPage = () => {
       tools: ["C++", "MPI", "CUDA"],
       skills: ["Parallel Computing", "Algorithm Optimization", "Scientific Computing"],
       relevantExperience: "10 years developing software for physics and engineering simulations",
+      avatar: "/images/hc-popup/michael.png"
     },
     {
       id: 6,
@@ -73,6 +78,7 @@ const ResearchResourcesPage = () => {
       tools: ["MATLAB", "LabVIEW", "EEGlab"],
       skills: ["Signal Processing", "Machine Learning", "Experimental Design"],
       relevantExperience: "12 years in neuroscience research, 5 years leading BCI projects",
+      avatar: "/images/hc-popup/aisha.png"
     }
   ];
 

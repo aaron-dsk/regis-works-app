@@ -17,6 +17,9 @@ const geistMono = localFont({
 export const metadata: Metadata = {
   title: "Regis Works",
   description: "Regis Works Dashboard",
+  icons: {
+    icon: '/favicon.ico',
+  },
 };
 
 export default function RootLayout({

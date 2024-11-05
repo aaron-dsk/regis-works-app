@@ -9,6 +9,7 @@ import { Input } from "@/components/ui/input"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Search } from "lucide-react"
 import { motion } from "framer-motion"
+import { HumanCapitalCard } from "@/components/human-capital-card"
 
 export interface ListViewItem {
   id: number;
@@ -39,6 +40,8 @@ export function ListView({ data, columns, filters = [] }: ListViewProps) {
   const [filterValues, setFilterValues] = useState<Record<string, string>>(
     Object.fromEntries(filters.map(filter => [filter.key, ""]))
   )
+  const [selectedItem, setSelectedItem] = useState<ListViewItem | null>(null);
+  const [isCardOpen, setIsCardOpen] = useState(false);
 
   const handleSort = (column: string) => {
     if (column === sortColumn) {
@@ -94,6 +97,11 @@ export function ListView({ data, columns, filters = [] }: ListViewProps) {
     }
   };
 
+  const handleRowClick = (item: ListViewItem) => {
+    setSelectedItem(item);
+    setIsCardOpen(true);
+  };
+
   return (
     <div className="w-full">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 mb-6">
@@ -146,7 +154,8 @@ export function ListView({ data, columns, filters = [] }: ListViewProps) {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: index * 0.1 }}
-                className="w-full"
+                className="w-full cursor-pointer hover:bg-gray-50"
+                onClick={() => handleRowClick(item)}
               >
                 {columns.map((column) => (
                   <TableCell 
@@ -162,6 +171,22 @@ export function ListView({ data, columns, filters = [] }: ListViewProps) {
           </TableBody>
         </Table>
       </div>
+
+      {selectedItem && (
+        <HumanCapitalCard
+          isOpen={isCardOpen}
+          onClose={() => setIsCardOpen(false)}
+          data={{
+            name: selectedItem.name,
+            avatar : selectedItem.avatar,
+            location: selectedItem.location,
+            bio: selectedItem.bio,
+            tools: selectedItem.tools,
+            skills: selectedItem.skills,
+            relevantExperience: selectedItem.relevantExperience
+          }}
+        />
+      )}
     </div>
   )
 }
