@@ -7,7 +7,7 @@ import { Marketplace } from '@/components/marketplace';
 import { ListView, ListViewItem } from '@/components/list-view';
 import ToggleView from '@/components/toggle-view';
 import { HardwareShowcase } from '@/components/hardware-showcase'
-import { MedicalDataCards } from '@/components/medical-data-cards';
+import { DataCatalogGrid } from '@/components/data-catalog-card';
 import { ServiceListings } from '@/components/service-listings';
 import { Badge } from '@/components/ui/badge'
 import { SoftwareShowcase } from '@/components/software-showcase'
@@ -258,7 +258,7 @@ const ResearchResourcesPage = () => {
     },
     {
       label: 'Data',
-      content: <MedicalDataCards />,
+      content: <DataCatalogGrid />,
     },
     {
       label: 'Services',
