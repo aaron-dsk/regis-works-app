@@ -29,93 +29,93 @@ type CatalogData = {
 const datasetItems: CatalogData[] = [
   {
     id: '1',
-    title: 'National Space Science Data Center Master Catalog',
-    logo: '/images/data/nasa.png',
-    sources: ['catalog.data.gov', 'data.nasa.gov'],
-    updatedAt: 'Dec 6, 2023',
+    title: 'Global Climate Projections',
+    logo: '/images/data/nasa.jpg',
+    sources: ['https://data.nasa.gov/'],
+    updatedAt: 'August 2023',
     author: 'NASA',
-    description: 'The National Space Science Data Center serves as the permanent archive for NASA space science mission data. Space science means astronomy and astrophysics, solar and space plasma physics, and planetary...',
-    country: 'United States',
+    description: 'High-resolution global climate projections dataset designed to help predict environmental changes, assess climate risks, and support scientific research on global climate change impacts and mitigation strategies.',
+    country: 'Worldwide',
     dateRange: '1958 - Present',
-    tags: ['Satellite', 'Earth', 'Physics'],
-    recordCount: '1,234,567',
+    tags: ['Climate', 'Projections', 'Global'],
+    recordCount: '5,000,000+',
     status: 'Ongoing',
-    formats: ['CSV', 'PDF', 'ZIP']
+    formats: ['CSV', 'NetCDF', 'JSON']
   },
   {
     id: '2',
-    title: 'Disease Analyzer France',
-    logo: '/images/data/iqvia.png',
-    sources: ['iqvia.com', 'health-data.fr'],
-    updatedAt: '2 weeks ago',
-    author: 'IQVIA',
-    description: 'Comprehensive EMR dataset covering 4.4M patient records from French healthcare providers. Includes detailed clinical data, prescriptions, and outcomes across various therapeutic areas.',
-    country: 'France',
-    dateRange: '2010-Present',
-    tags: ['EMR', 'Clinical', 'Prescriptions'],
-    recordCount: '4,400,000',
-    status: 'Ongoing',
-    formats: ['CSV', 'FHIR', 'JSON']
+    title: 'Immune Profiling of COVID-19',
+    logo: '/images/data/prague.jpg',
+    sources: ['https://zenodo.org/records/14096648'],
+    updatedAt: 'April 10, 2021',
+    author: 'Multiple',
+    description: 'Immune profiling of COVID-19 patients using single-cell RNA sequencing and other techniques, providing critical insights into immune system behavior, disease progression, and therapeutic interventions.',
+    country: 'Worldwide',
+    dateRange: '2019 - 2021',
+    tags: ['COVID-19', 'Immune Profiling', 'Therapeutics'],
+    recordCount: '5,400,000+',
+    status: 'Decommissioned',
+    formats: ['CSV', 'RDS', 'TAR.GZ', 'TXT']
   },
   {
     id: '3',
-    title: 'Longitudinal Patient Data France',
-    logo: '/images/data/iqvia.png',
-    sources: ['iqvia.com', 'lpd-database.fr'],
-    updatedAt: '5 months ago',
-    author: 'IQVIA',
-    description: 'Long-term patient tracking database with 11.8M records spanning 30+ years. Provides insights into treatment patterns, disease progression, and healthcare utilization.',
-    country: 'France',
-    dateRange: '1992-Present',
-    tags: ['EMR', 'Longitudinal', 'Patient Outcomes'],
-    recordCount: '11,800,000',
-    status: 'Ongoing',
-    formats: ['CSV', 'SAS', 'Parquet']
+    title: 'Glucose Monitoring in Diabetes Mellitus',
+    logo: '/images/data/mayo.webp',
+    sources: ['https://clinicaltrials.gov/study/NCT04653454?cond=Diabetes&rank=3'],
+    updatedAt: 'August 2022',
+    author: 'Mayo Clinic',
+    description: 'This clinical trial investigated the effectiveness of continuous glucose monitoring (CGM) devices in managing blood sugar levels among hospitalized patients with diabetes. ',
+    country: 'United States',
+    dateRange: '2020 - 2022',
+    tags: ['Diabetes', 'Glucose Monitoring', 'Clinical Trial'],
+    recordCount: 'Estimated 500+',
+    status: 'Completed',
+    formats: ['PDF', 'XML', 'TXT']
   },
   {
     id: '4',
-    title: 'ADOReg/DxCOG Registry',
-    logo: '/images/data/adoreg.jpg',
-    sources: ['german-research.de', 'adoreg.de'],
-    updatedAt: '2 months ago',
-    author: 'German Research Network',
-    description: 'Specialized registry focusing on cognitive disorders and Alzheimers disease, containing detailed clinical assessments and outcomes for 9,900 patients.',
-    country: 'Germany',
-    dateRange: '2008-Present',
-    tags: ['Registry', 'Cognitive', 'Alzheimers'],
-    recordCount: '9,900',
-    status: 'Ongoing',
-    formats: ['CSV', 'SPSS', 'Excel']
+    title: 'E-Cigarette Use During Pregnancy',
+    logo: '/images/data/uconn.jpg',
+    sources: ['https://clinicaltrials.gov/study/NCT03480373?cond=Cigarette%20Smoking-Related%20Carcinoma&rank=4'],
+    updatedAt: 'September 2019',
+    author: 'Uconn Health',
+    description: 'The study examines the effects of e-cigarette use versus traditional smoking during pregnancy, focusing on maternal health and neonatal outcomes, including exposure to carcinogens.',
+    country: 'United States',
+    dateRange: '2018 - 2019',
+    tags: ['Pregnancy', 'E-cigarettes', 'Neonatal Health'],
+    recordCount: '3,400',
+    status: 'Completed',
+    formats: ['PDF', 'XML', 'TXT']
   },
   {
     id: '5',
-    title: 'SNDS Health Database',
-    logo: '/images/data/snds.avif',
-    sources: ['health-data.fr', 'snds.gouv.fr'],
-    updatedAt: '3 years ago',
-    author: 'French Ministry of Health',
-    description: 'National health insurance database covering 67M French residents. Includes claims, hospitalizations, and long-term care data with comprehensive coverage.',
-    country: 'France',
-    dateRange: '2003-Present',
-    tags: ['Claims', 'Insurance', 'National'],
-    recordCount: '67,000,000',
+    title: 'PROBA-V Global Vegetation Data',
+    logo: '/images/data/belspo.jpg',
+    sources: ['https://docs.terrascope.be/#/DataProducts/PROBA-V/ProductsOverview'],
+    updatedAt: 'October 31, 2021',
+    author: 'VITO on behalf of BELSPO',
+    description: 'Global satellite imagery and vegetation data from PROBA-V, supporting environmental monitoring with free, reprocessed datasets. It provides crucial observation data for agriculture, biodiversity, and water management.',
+    country: 'Worldwide',
+    dateRange: '2013 - 2021',
+    tags: ['Vegetation', 'Satellite Imagery', 'Environmental Monitoring'],
+    recordCount: 'Over 1 Petabyte',
     status: 'Decommissioned',
-    formats: ['CSV', 'SAS', 'R']
+    formats: ['GeoTIFF', 'NetCDF', 'HDF5', 'XML']
   },
   {
     id: '6',
-    title: 'German Claims - SHI',
-    logo: '/images/data/shi.jpeg',
-    sources: ['shi-germany.de', 'health-data.de'],
-    updatedAt: '6 years ago',
-    author: 'German SHI',
-    description: 'Statutory Health Insurance claims database covering 5M German patients. Contains comprehensive healthcare utilization, prescriptions, and outcomes data.',
-    country: 'Germany',
-    dateRange: '2000-Present',
-    tags: ['Claims', 'Insurance', 'Prescriptions'],
-    recordCount: '5,000,000',
-    status: 'Decommissioned',
-    formats: ['CSV', 'SAS', 'XML']
+    title: 'ATLAS Top Tagging Open Data Set',
+    logo: '/images/data/atlas.png',
+    sources: ['https://opendata.cern.ch/record/80030'],
+    updatedAt: '2 months ago',
+    author: 'ATLAS Collaboration',
+    description: 'Top quark tagging for machine learning. This dataset is crucial for developing ML algorithms to differentiate top quark events from background noise in particle collisions.',
+    country: 'Worldwide',
+    dateRange: '2015 - 2024',
+    tags: ['High Energy Physics', 'Top Quark', 'Machine Learning'],
+    recordCount: '~205 million jets',
+    status: 'Ongoing',
+    formats: ['CSV', 'ROOT', 'JSON']
   }
 ]
 
@@ -149,7 +149,7 @@ const filters: Filter[] = [
     key: "status",
     title: "Status",
     type: "select",
-    options: ["All", "Ongoing", "Decommissioned"]
+    options: ["All", "Ongoing", "Decommissioned", "Completed"]
   }
 ]
 
@@ -212,7 +212,7 @@ export function DataCatalogGrid() {
       </div>
 
       <AnimatePresence mode="wait">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {filteredItems.map((item, index) => (
             <motion.div
               key={item.id}
@@ -232,7 +232,7 @@ export function DataCatalogGrid() {
 
 function DataCatalogCard({ data }: { data: CatalogData }) {
   return (
-    <Card className="bg-[#f8f8f8] bg-dot-gray-200/50">
+    <Card className="bg-[#f8f8f8] bg-dot-gray-200/50 relative">
       <CardHeader className="flex flex-row items-start gap-4 space-y-0">
         <div className="w-16 h-16 rounded-lg overflow-hidden flex-shrink-0 flex items-center justify-center bg-white">
           <Image
@@ -244,13 +244,30 @@ function DataCatalogCard({ data }: { data: CatalogData }) {
             style={{ aspectRatio: '1/1' }}
           />
         </div>
-        <div className="space-y-1">
-          <h2 className="text-lg font-semibold leading-none tracking-tight">
-            {data.title}
-          </h2>
+        <div className="space-y-1 flex-1">
+          <div className="flex justify-between items-start gap-4">
+            <h2 className="text-md font-semibold leading-none tracking-tight">
+              {data.title}
+            </h2>
+            <Badge 
+              variant={
+                data.status.toLowerCase() === 'completed' ? 'completed' :
+                data.status.toLowerCase() === 'decommissioned' ? 'secondary' :
+                'ongoing'
+              }
+              className="text-[10px] px-1.5 py-0.5 flex-shrink-0"
+            >
+              {data.status}
+            </Badge>
+          </div>
           <div className="space-y-1 text-sm text-blue-600">
             {data.sources.map((source, index) => (
-              <Link key={index} href="#" className="block hover:underline">
+              <Link 
+                key={index} 
+                href={source} 
+                className="block hover:underline"
+                target="_blank"  // Opens in new tab
+              >
                 {source}
               </Link>
             ))}
@@ -269,23 +286,30 @@ function DataCatalogCard({ data }: { data: CatalogData }) {
             </div>
           </div>
           <div className="space-y-2">
-            <h3 className="font-semibold underline">Description:</h3>
+            <h3 className="font-semibold">Description:</h3>
             <p className="text-sm text-muted-foreground">
               {data.description}
             </p>
           </div>
         </div>
 
-        <div className="grid grid-cols-3 gap-4 text-sm">
-          <div className="space-y-2">
-            <h3 className="font-semibold">Country:</h3>
-            <p>{data.country}</p>
+        <div className="space-y-6">
+          <div className="grid grid-cols-3 gap-4 text-sm">
+            <div className="space-y-2">
+              <h3 className="font-semibold">Country:</h3>
+              <p>{data.country}</p>
+            </div>
+            <div className="space-y-2">
+              <h3 className="font-semibold">Date Range:</h3>
+              <p>{data.dateRange}</p>
+            </div>
+            <div className="space-y-2">
+              <h3 className="font-semibold">Records:</h3>
+              <p>{data.recordCount}</p>
+            </div>
           </div>
-          <div className="space-y-2">
-            <h3 className="font-semibold">Date Range:</h3>
-            <p>{data.dateRange}</p>
-          </div>
-          <div className="space-y-2">
+
+          <div className="space-y-2 text-sm">
             <h3 className="font-semibold">Tags:</h3>
             <div className="flex flex-wrap gap-1">
               {data.tags.map((tag, index) => (
@@ -295,20 +319,8 @@ function DataCatalogCard({ data }: { data: CatalogData }) {
               ))}
             </div>
           </div>
-          <div className="space-y-2">
-            <h3 className="font-semibold">Records:</h3>
-            <p>{data.recordCount}</p>
-          </div>
-          <div className="space-y-2">
-            <h3 className="font-semibold">Status:</h3>
-            <Badge 
-              variant="secondary" 
-              className="text-[10px] px-1.5 py-0.5 whitespace-normal"
-            >
-              {data.status}
-            </Badge>
-          </div>
-          <div className="space-y-2">
+
+          <div className="space-y-2 text-sm">
             <h3 className="font-semibold">Format:</h3>
             <div className="flex flex-wrap gap-1">
               {data.formats.map((format, index) => (
