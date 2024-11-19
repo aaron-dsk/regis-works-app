@@ -19,7 +19,7 @@ export const Header: FC<HTMLAttributes<HTMLDivElement>> = ({ className, ...props
         <input
           type="text"
           placeholder="Search..."
-          className="w-full h-8 px-3 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="w-full h-8 px-3 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white text-gray-900 placeholder:text-gray-500"
         />
       </div>
       <div className="flex items-center space-x-2">
