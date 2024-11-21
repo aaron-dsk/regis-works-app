@@ -2,7 +2,7 @@
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
-import { Search, Briefcase, BookmarkIcon, BarChart2, Settings, HelpCircle, Mail } from "lucide-react"
+import { Search, Briefcase, BookmarkIcon, BarChart2, Settings, HelpCircle, Mail, ScrollText } from "lucide-react"
 import Link from "next/link"
 import { usePathname } from 'next/navigation'
 import Image from 'next/image'
@@ -12,6 +12,7 @@ export function SideBarNav() {
 
   const menuItems = [
     { name: 'Research Resources', icon: Search, path: '/research-resources' },
+    { name: 'Research Papers', icon: ScrollText, path: '/research-papers' },
     { name: 'SPI', icon: Briefcase, path: '/spi' },
     { name: 'Incubation & Acceleration', icon: BookmarkIcon, path: '/incubators-accelerators' },
     { name: 'Favorites', icon: BarChart2, path: '/favorites' },
