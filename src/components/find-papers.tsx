@@ -10,6 +10,7 @@ import {
 import { Switch } from "@/components/ui/switch"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
+import Link from "next/link"
 
 export default function FindPapers() {
   const [sort, setSort] = useState("Trending")
@@ -200,38 +201,40 @@ export default function FindPapers() {
           </DropdownMenuContent>
         </DropdownMenu>
       </div>
-      {papers.map((paper) => (
-        <Card key={paper.id} className="mb-4">
-          <CardContent className="flex gap-4 p-4">
-            <div className="flex flex-col items-center">
-              <ChevronUp className="cursor-pointer h-5 w-5 text-muted-foreground" />
-              <span className="font-bold text-lg">{paper.votes}</span>
-              <ChevronDown className="cursor-pointer h-5 w-5 text-muted-foreground" />
-            </div>
-            <div className="flex-1">
-              <h2 className="font-semibold text-lg">{paper.title}</h2>
-              <p className="text-sm text-muted-foreground">{paper.author ? `${paper.author} | ` : ''}{paper.date}</p>
-              <p className="text-sm mt-2 text-muted-foreground">{paper.description}</p>
-              <div className="flex items-center gap-2 mt-2">
-                {paper.tags.map((tag) => (
-                  <Badge key={tag} variant="secondary" className="text-xs">{tag}</Badge>
-                ))}
+      {papers.map((paper, index) => (
+        <Card key={paper.id} className={`mb-4 ${index === 0 ? 'cursor-pointer' : ''}`}>
+          <Link href={index === 0 ? "/paper-details" : "#"}>
+            <CardContent className="flex gap-4 p-4">
+              <div className="flex flex-col items-center">
+                <ChevronUp className="cursor-pointer h-5 w-5 text-muted-foreground" />
+                <span className="font-bold text-lg">{paper.votes}</span>
+                <ChevronDown className="cursor-pointer h-5 w-5 text-muted-foreground" />
               </div>
-            </div>
-            <div className="flex flex-col items-end justify-between">
-              {paper.rating && (
-                <div className="flex items-center gap-1">
-                  <Star className="w-4 h-4 text-yellow-400 fill-yellow-400" />
-                  <span className="text-sm">{paper.rating}</span>
+              <div className="flex-1">
+                <h2 className="font-semibold text-lg">{paper.title}</h2>
+                <p className="text-sm text-muted-foreground">{paper.author ? `${paper.author} | ` : ''}{paper.date}</p>
+                <p className="text-sm mt-2 text-muted-foreground">{paper.description}</p>
+                <div className="flex items-center gap-2 mt-2">
+                  {paper.tags.map((tag) => (
+                    <Badge key={tag} variant="secondary" className="text-xs">{tag}</Badge>
+                  ))}
                 </div>
-              )}
-              <div className="flex items-center gap-1">
-                <MessageSquare className="w-4 h-4 text-muted-foreground" />
-                <span className="text-sm">{paper.comments}</span>
               </div>
-              <Save className="w-4 h-4 cursor-pointer text-muted-foreground" />
-            </div>
-          </CardContent>
+              <div className="flex flex-col items-end justify-between">
+                {paper.rating && (
+                  <div className="flex items-center gap-1">
+                    <Star className="w-4 h-4 text-yellow-400 fill-yellow-400" />
+                    <span className="text-sm">{paper.rating}</span>
+                  </div>
+                )}
+                <div className="flex items-center gap-1">
+                  <MessageSquare className="w-4 h-4 text-muted-foreground" />
+                  <span className="text-sm">{paper.comments}</span>
+                </div>
+                <Save className="w-4 h-4 cursor-pointer text-muted-foreground" />
+              </div>
+            </CardContent>
+          </Link>
         </Card>
       ))}
     </div>
