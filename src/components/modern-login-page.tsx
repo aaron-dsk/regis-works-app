@@ -9,7 +9,7 @@ import { useRouter } from 'next/navigation'
 
 // Hardcoded credentials (for demo purposes only)
 const VALID_CREDENTIALS = [
-  { username: 'hello', password: 'hello123' }
+  { username: 'rdaxis', password: 'rdaxisdemo123' }
 ]
 
 export function ModernLoginPageComponent() {
