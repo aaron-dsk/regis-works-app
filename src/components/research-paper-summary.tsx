@@ -16,6 +16,7 @@ export default function ResearchPaperSummary() {
   const [scale, setScale] = useState(1)
   const [error, setError] = useState<string | null>(null)
 
+  const file = typeof window !== 'undefined' ? window.location.origin + '/files/demoPDF.pdf' : ''
   function onDocumentLoadSuccess({ numPages }: { numPages: number }) {
     setNumPages(numPages)
     setError(null)
@@ -52,7 +53,7 @@ export default function ResearchPaperSummary() {
             <div className="text-sm text-gray-700 mb-4">
               <p><strong>Authors:</strong> Si-Yu Jia, Yuan-Bao Liu, Jing-Xin Li, <span className="text-blue-500">+17 authors</span></p>
               <p><strong>Published:</strong> Sep 15, 2024</p>
-              <p className="flex items-center"><strong>Peer Review:</strong> 
+              <p className="flex items-center"><strong>Peer Review:</strong>
                 {[...Array(4)].map((_, i) => (
                   <Star key={i} className="h-4 w-4 text-yellow-500 fill-current" />
                 ))}
@@ -82,9 +83,9 @@ export default function ResearchPaperSummary() {
           <TabsContent value="paper" className="relative">
             <div className="flex justify-end gap-2 mb-4">
               <Button variant="outline" size="sm" onClick={() => setScale(scale - 0.1)}>-</Button>
-              <Button 
-                variant="outline" 
-                size="sm" 
+              <Button
+                variant="outline"
+                size="sm"
                 onClick={() => setScale(1)}
                 className="min-w-20"
               >
@@ -93,7 +94,7 @@ export default function ResearchPaperSummary() {
               <Button variant="outline" size="sm" onClick={() => setScale(scale + 0.1)}>+</Button>
             </div>
             <Document
-              file={window.location.origin + '/files/demoPDF.pdf'}
+              file={file}
               onLoadSuccess={onDocumentLoadSuccess}
               onLoadError={onDocumentLoadError}
               loading={
@@ -107,9 +108,9 @@ export default function ResearchPaperSummary() {
                 <div className="text-red-500">Error loading PDF: {error}</div>
               ) : (
                 Array.from(new Array(numPages), (el, index) => (
-                  <Page 
+                  <Page
                     key={`page_${index + 1}`}
-                    pageNumber={index + 1} 
+                    pageNumber={index + 1}
                     scale={scale}
                     className="mb-4"
                   />
