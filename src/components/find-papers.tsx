@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { ChevronDown, ChevronUp, Star, MessageSquare, Save, TrendingUp, Flame, ArrowUp, Clock } from 'lucide-react'
+import { ChevronDown, ChevronUp, Star, MessageSquare, Save, Flame, ArrowUp, Clock } from 'lucide-react'
 import { Button } from "@/components/ui/button"
 import {
   DropdownMenu,
