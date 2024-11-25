@@ -10,11 +10,11 @@ import {
 
 export default function Grants() {
   return (
-    <div className="max-w-6xl">
+    <div className="p-8">
       <div>
         <h1 className="text-2xl font-bold mb-4">Grants</h1>
         <p className="text-muted-foreground mb-4">
-          Earn ResearchCoin by completing research related grants.
+          Jumpstart research projects by completing research related grants.
         </p>
       </div>
 
@@ -55,10 +55,14 @@ export default function Grants() {
       <div className="space-y-6">
         <Card className="p-6">
           <div className="flex items-center gap-2 mb-4">
-            <div className="w-8 h-8 bg-purple-600 rounded-full flex items-center justify-center text-white">
-              R
+            <div className="w-8 h-8 rounded-full overflow-hidden">
+              <img 
+                src="/images/job-listings/stanford.png"
+                alt="Stanford University"
+                className="w-full h-full object-cover"
+              />
             </div>
-            <span className="font-medium">ResearchHub Foundation</span>
+            <span className="font-medium">Stanford University</span>
             <span className="text-muted-foreground">created a grant</span>
           </div>
 
@@ -67,10 +71,8 @@ export default function Grants() {
               <span className="text-muted-foreground">Amount:</span>
               <div className="flex items-center gap-2">
                 <div className="flex items-center">
-                  <div className="w-4 h-4 bg-orange-500 rounded-full mr-1" />
-                  200 RSC
                 </div>
-                <span className="text-muted-foreground">($148.17)</span>
+                <span className="text-muted-foreground">$14,000</span>
               </div>
             </div>
             <div className="flex justify-between">
@@ -116,10 +118,14 @@ export default function Grants() {
 
         <Card className="p-6">
           <div className="flex items-center gap-2 mb-4">
-            <div className="w-8 h-8 bg-purple-600 rounded-full flex items-center justify-center text-white">
-              R
+            <div className="w-8 h-8 rounded-full overflow-hidden">
+              <img 
+                src="/images/job-listings/hopkins.jpg"
+                alt="Hopkins"
+                className="w-full h-full object-cover"
+              />
             </div>
-            <span className="font-medium">ResearchHub Foundation</span>
+            <span className="font-medium">John Hopkins University</span>
             <span className="text-muted-foreground">created a grant</span>
           </div>
 
@@ -128,10 +134,8 @@ export default function Grants() {
               <span className="text-muted-foreground">Amount:</span>
               <div className="flex items-center gap-2">
                 <div className="flex items-center">
-                  <div className="w-4 h-4 bg-orange-500 rounded-full mr-1" />
-                  210 RSC
                 </div>
-                <span className="text-muted-foreground">($155.58)</span>
+                <span className="text-muted-foreground">$34,000</span>
               </div>
             </div>
             <div className="flex justify-between">
