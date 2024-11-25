@@ -90,12 +90,6 @@ export default function Journals() {
             className="pl-10 pr-4 py-2 w-full border rounded-lg"
           />
         </div>
-        <button className="flex items-center gap-2 px-4 py-2 border rounded-lg">
-          Paper count
-          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-          </svg>
-        </button>
       </div>
 
       <div className="grid grid-cols-3 gap-6">
