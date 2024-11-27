@@ -72,7 +72,7 @@ export function Blog() {
   }, [filterValues])
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-background text-foreground">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 mb-6">
           {filters.map((filter) => (
@@ -100,7 +100,7 @@ export function Blog() {
               transition={{ duration: 0.4, delay: index * 0.1 }}
               className="h-full"
             >
-              <Card className="overflow-hidden bg-card dark:bg-gray-800 h-full">
+              <Card className="overflow-hidden bg-card h-full">
                 <img
                   src={project.image}
                   alt={project.title}
@@ -117,7 +117,9 @@ export function Blog() {
                       <span className="font-medium">Location:</span> {project.location}
                     </p>
                   </div>
-
+                  <p className="text-sm text-muted-foreground">
+                    {project.description}
+                  </p>
                   <div className="flex flex-wrap gap-2">
                     {project.tags.map((tag, tagIndex) => (
                       <span 
@@ -129,9 +131,7 @@ export function Blog() {
                     ))}
                   </div>
 
-                  <p className="text-sm text-muted-foreground">
-                    {project.description}
-                  </p>
+
                 </CardContent>
               </Card>
             </motion.div>
