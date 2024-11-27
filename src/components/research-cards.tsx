@@ -146,7 +146,7 @@ export function ResearchCards() {
                 <h3 className="text-lg font-bold tracking-tight">{project.title}</h3>
                 <p className="text-sm text-muted-foreground">{project.institution}</p>
               </CardHeader>
-              <CardContent className="space-y-4 flex-grow overflow-y-auto">
+              <CardContent className="space-y-4 flex-grow overflow-y-auto [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar-thumb]:bg-gray-300 [&::-webkit-scrollbar-thumb]:rounded-full">
                 <div className="space-y-2">
                   <h4 className="font-semibold">Research Focus</h4>
                   <p className="text-sm text-muted-foreground">{project.focus}</p>
