@@ -22,7 +22,11 @@ export function ChatInterface() {
           <div className="relative mb-4">
             <Input 
               placeholder="Search" 
-              className="pl-8 w-full bg-white text-gray-900"
+              className="!bg-white !text-gray-900 pl-8 w-full" 
+              style={{ 
+                backgroundColor: 'white !important',
+                color: '#111827 !important'
+              }}
             />
             <Search className="absolute left-2 top-1/2 transform -translate-y-1/2 text-gray-400" size={18} />
           </div>
