@@ -17,8 +17,8 @@ export function ChatInterface() {
   return (
     <div className="flex h-screen overflow-hidden bg-gray-100 text-gray-900" data-theme="light">
       {/* Left sidebar */}
-      <div className="w-1/4 bg-white dark:bg-gray-800 border-r border-gray-200 dark:border-gray-700 flex flex-col">
-        <div className="p-4 border-b border-gray-200 dark:border-gray-700">
+      <div className="w-1/4 bg-white border-r border-gray-200 flex flex-col">
+        <div className="p-4 border-b border-gray-200">
           <div className="relative mb-4">
             <Input 
               placeholder="Search" 
