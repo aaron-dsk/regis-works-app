@@ -15,12 +15,15 @@ export function ChatInterface() {
   const [selectedAgent, setSelectedAgent] = useState(agents[1])
 
   return (
-    <div className="flex h-screen overflow-hidden bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
+    <div className="flex h-screen overflow-hidden bg-gray-100 text-gray-900" data-theme="light">
       {/* Left sidebar */}
       <div className="w-1/4 bg-white dark:bg-gray-800 border-r border-gray-200 dark:border-gray-700 flex flex-col">
         <div className="p-4 border-b border-gray-200 dark:border-gray-700">
           <div className="relative mb-4">
-            <Input placeholder="Search" className="pl-8 w-full bg-transparent" />
+            <Input 
+              placeholder="Search" 
+              className="pl-8 w-full bg-white text-gray-900"
+            />
             <Search className="absolute left-2 top-1/2 transform -translate-y-1/2 text-gray-400" size={18} />
           </div>
           <div className="flex items-center text-blue-500 dark:text-blue-400">
