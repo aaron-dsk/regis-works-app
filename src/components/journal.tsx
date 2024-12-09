@@ -87,7 +87,8 @@ export default function Journals() {
           <input 
             type="text"
             placeholder="Search hubs"
-            className="pl-10 pr-4 py-2 w-full border rounded-lg"
+            className="pl-10 pr-4 py-2 w-full border rounded-lg bg-white text-gray-900"
+            style={{ backgroundColor: 'white', color: 'black' }}
           />
         </div>
       </div>
